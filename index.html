@@ -788,16 +788,6 @@
   }, { threshold: 0.12 });
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-  // Form submit
-  function handleSubmit(e) {
-    e.preventDefault();
-    const btn = e.target.querySelector('.form-submit');
-    btn.textContent = 'Message sent ✓';
-    btn.style.background = '#27500A';
-    btn.disabled = true;
-    setTimeout(() => { btn.textContent = 'Send inquiry'; btn.style.background = ''; btn.disabled = false; e.target.reset(); }, 3000);
-  }
-
   // Smooth nav close on mobile link click
   document.querySelectorAll('.nav-links a').forEach(a => {
     a.addEventListener('click', () => document.getElementById('nav-links').classList.remove('open'));
