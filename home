@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZigTech, LLC — Network Observability & IT Infrastructure</title>
+<meta name="description" content="SBA-certified SDVOSB, VOSB, and HUBZone IT firm specializing in network observability, cybersecurity, and infrastructure for federal and commercial clients. Cocoa, FL.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #185FA5;
+    --blue-light: #E6F1FB;
+    --blue-mid: #378ADD;
+    --slate: #2D3748;
+    --slate-light: #4A5568;
+    --green-bg: #EAF3DE;
+    --green-text: #27500A;
+    --amber-bg: #FAEEDA;
+    --amber-text: #633806;
+    --gray-bg: #F1EFE8;
+    --gray-text: #444441;
+    --white: #ffffff;
+    --off-white: #FAFAF8;
+    --border: rgba(0,0,0,0.08);
+    --border-strong: rgba(0,0,0,0.14);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--slate);
+    background: var(--white);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+  .nav-logo img { height: 40px; width: auto; display: block; }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 13.5px;
+    font-weight: 400;
+    color: var(--slate-light);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--blue); }
+  .nav-cta {
+    background: var(--blue);
+    color: white !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    padding: 8px 18px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s !important;
+  }
+  .nav-cta:hover { background: #1450890 !important; transform: translateY(-1px); }
+  .nav-mobile-toggle { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+  .nav-mobile-toggle span { width: 22px; height: 2px; background: var(--slate); border-radius: 2px; transition: 0.3s; }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 96px 2rem 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .cert-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 2rem;
+    animation: fadeUp 0.6s ease forwards;
+  }
+  .cert-badge {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 5px 12px;
+    border-radius: 100px;
+    letter-spacing: 0.02em;
+  }
+  .badge-sdvosb { background: var(--blue-light); color: #0C447C; }
+  .badge-vosb   { background: var(--green-bg);   color: var(--green-text); }
+  .badge-hub    { background: var(--amber-bg);   color: var(--amber-text); }
+  .badge-sam    { background: var(--gray-bg);    color: var(--gray-text); }
+
+  .hero-headline {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(36px, 5vw, 58px);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--slate);
+    max-width: 760px;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.6s 0.1s ease forwards;
+    opacity: 0;
+  }
+  .hero-headline em {
+    font-style: italic;
+    color: var(--blue);
+  }
+  .hero-sub {
+    font-size: 17px;
+    font-weight: 300;
+    color: var(--slate-light);
+    max-width: 560px;
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+    animation: fadeUp 0.6s 0.2s ease forwards;
+    opacity: 0;
+  }
+  .hero-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.3s ease forwards;
+    opacity: 0;
+  }
+  .btn-primary {
+    background: var(--blue);
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px 24px;
+    border-radius: 7px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: #145089; transform: translateY(-1px); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--slate);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 12px 24px;
+    border-radius: 7px;
+    text-decoration: none;
+    border: 1px solid var(--border-strong);
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-secondary:hover { border-color: var(--blue); color: var(--blue); transform: translateY(-1px); }
+
+  /* ── AUDIENCE STRIP ── */
+  .audience-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    background: var(--off-white);
+  }
+  .audience-card {
+    padding: 2.5rem 2.5rem;
+  }
+  .audience-card:first-child { border-right: 1px solid var(--border); }
+  .audience-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.6rem;
+  }
+  .label-federal { color: var(--blue); }
+  .label-commercial { color: var(--green-text); }
+  .audience-card h3 {
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--slate);
+    margin-bottom: 0.6rem;
+    line-height: 1.4;
+  }
+  .audience-card p {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--slate-light);
+    line-height: 1.7;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 96px 2rem; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--blue);
+    margin-bottom: 0.75rem;
+  }
+  .section-heading {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 3.5vw, 40px);
+    font-weight: 400;
+    color: var(--slate);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  .section-intro {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--slate-light);
+    max-width: 620px;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+  }
+
+  /* ── CAPABILITIES ── */
+  #capabilities { background: var(--white); }
+  .caps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .cap-card {
+    background: var(--white);
+    padding: 2rem;
+    transition: background 0.2s;
+  }
+  .cap-card:hover { background: #F8FBFF; }
+  .cap-card h3 {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--slate);
+    margin-bottom: 0.6rem;
+    line-height: 1.4;
+  }
+  .cap-card p {
+    font-size: 13.5px;
+    font-weight: 300;
+    color: var(--slate-light);
+    line-height: 1.7;
+  }
+  .cap-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 1rem;
+  }
+  .tag {
+    font-size: 11px;
+    padding: 3px 9px;
+    border-radius: 4px;
+    font-weight: 500;
+  }
+  .tag-fed { background: var(--blue-light); color: #0C447C; }
+  .tag-com { background: var(--green-bg); color: var(--green-text); }
+  .tag-naics { background: var(--gray-bg); color: var(--gray-text); }
+
+  /* ── WHO WE SERVE ── */
+  #who { background: var(--off-white); }
+  .who-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 12px;
+  }
+  .who-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .who-card:hover { border-color: var(--blue); transform: translateY(-2px); }
+  .who-type {
+    font-size: 10.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--slate-light);
+    margin-bottom: 0.35rem;
+  }
+  .who-card h4 {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--slate);
+    line-height: 1.4;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--white); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .stat-col { display: flex; flex-direction: column; gap: 12px; }
+  .stat-card {
+    background: var(--off-white);
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid var(--border);
+  }
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 32px;
+    color: var(--blue);
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-label { font-size: 12.5px; color: var(--slate-light); font-weight: 300; }
+  .about-text p {
+    font-size: 15.5px;
+    font-weight: 300;
+    color: var(--slate-light);
+    line-height: 1.85;
+    margin-bottom: 1.25rem;
+  }
+  .about-text p:last-child { margin-bottom: 0; }
+
+  /* ── CERTS ── */
+  #certifications { background: var(--off-white); }
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .cert-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .cert-card:hover { transform: translateY(-2px); }
+  .cert-card.sdvosb:hover { border-color: var(--blue); }
+  .cert-card.vosb:hover   { border-color: #3B6D11; }
+  .cert-card.hub:hover    { border-color: #854F0B; }
+  .cert-card.sam:hover    { border-color: #888780; }
+  .cert-type-label {
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+  .cert-card.sdvosb .cert-type-label { color: var(--blue); }
+  .cert-card.vosb   .cert-type-label { color: #3B6D11; }
+  .cert-card.hub    .cert-type-label { color: #854F0B; }
+  .cert-card.sam    .cert-type-label { color: #888780; }
+  .cert-card h3 {
+    font-size: 14.5px;
+    font-weight: 500;
+    color: var(--slate);
+    margin-bottom: 0.4rem;
+    line-height: 1.4;
+  }
+  .cert-card p { font-size: 12.5px; color: var(--slate-light); font-weight: 300; line-height: 1.6; }
+  .cert-date { font-size: 11px; color: #888; margin-top: 0.6rem; }
+
+  .naics-box {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+  }
+  .naics-box h3 { font-size: 13px; font-weight: 600; color: var(--slate); margin-bottom: 1rem; letter-spacing: 0.01em; }
+  .naics-list { display: flex; flex-direction: column; gap: 8px; }
+  .naics-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13.5px;
+    padding: 4px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .naics-row:last-child { border-bottom: none; }
+  .naics-code { color: var(--blue); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .naics-desc { color: var(--slate-light); font-weight: 300; }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--white); }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 4rem;
+    align-items: start;
+  }
+  .contact-info p {
+    font-size: 15px;
+    font-weight: 300;
+    color: var(--slate-light);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+  .contact-details { display: flex; flex-direction: column; gap: 14px; }
+  .contact-item strong {
+    display: block;
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--slate);
+    margin-bottom: 2px;
+  }
+  .contact-item span { font-size: 14px; color: var(--slate-light); font-weight: 300; }
+  .contact-form-wrap {
+    background: var(--off-white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 2rem;
+  }
+  .form-field { margin-bottom: 1.1rem; }
+  .form-field label {
+    display: block;
+    font-size: 11.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--slate);
+    margin-bottom: 6px;
+  }
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    width: 100%;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--slate);
+    background: var(--white);
+    border: 1px solid var(--border-strong);
+    border-radius: 7px;
+    padding: 10px 14px;
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+  }
+  .form-field input:focus,
+  .form-field select:focus,
+  .form-field textarea:focus { border-color: var(--blue); }
+  .form-field textarea { height: 100px; resize: vertical; }
+  .form-submit {
+    width: 100%;
+    background: var(--blue);
+    color: white;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 12px;
+    border-radius: 7px;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    margin-top: 0.5rem;
+  }
+  .form-submit:hover { background: #145089; transform: translateY(-1px); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--slate);
+    color: rgba(255,255,255,0.6);
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  footer .footer-left { font-size: 13px; }
+  footer .footer-badges { display: flex; gap: 8px; }
+  footer .cert-badge { opacity: 0.85; }
+
+  /* ── DIVIDER ── */
+  .section-divider { height: 1px; background: var(--border); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 860px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .audience-strip { grid-template-columns: 1fr; }
+    .audience-card:first-child { border-right: none; border-bottom: 1px solid var(--border); }
+    .nav-links { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: white; border-bottom: 1px solid var(--border); padding: 1rem 2rem; gap: 1rem; }
+    .nav-links.open { display: flex; }
+    .nav-mobile-toggle { display: flex; }
+    nav { position: relative; }
+    .hero { padding: 64px 1.5rem 48px; }
+    section { padding: 64px 1.5rem; }
+  }
+  @media (max-width: 480px) {
+    .hero-headline { font-size: 30px; }
+    .caps-grid { grid-template-columns: 1fr; }
+    .cert-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <img src="data:image/png;base64,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" alt="ZigTech LLC">
+  </div>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="#capabilities">Capabilities</a></li>
+    <li><a href="#who">Who we serve</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#contact" class="nav-cta">Contact us</a></li>
+  </ul>
+  <div class="nav-mobile-toggle" id="nav-toggle" onclick="document.getElementById('nav-links').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="cert-strip">
+    <span class="cert-badge badge-sdvosb">SDVOSB — SBA Certified</span>
+    <span class="cert-badge badge-vosb">VOSB — SBA Certified</span>
+    <span class="cert-badge badge-hub">HUBZone — SBA Certified</span>
+    <span class="cert-badge badge-sam">SAM.gov Registered</span>
+  </div>
+  <h1 class="hero-headline">Enterprise network expertise —<br>for <em>government and commercial</em> clients</h1>
+  <p class="hero-sub">ZigTech delivers network observability, cybersecurity, and IT infrastructure solutions to federal agencies, prime contractors, and commercial enterprises. Veteran-led. 20+ years of hands-on experience. Triple set-aside eligible.</p>
+  <div class="hero-actions">
+    <a href="#contact" class="btn-primary">Request a capability briefing</a>
+    <a href="#" class="btn-secondary">Download capabilities statement ↓</a>
+  </div>
+</div>
+
+<!-- AUDIENCE STRIP -->
+<div class="audience-strip">
+  <div class="audience-card reveal">
+    <div class="audience-label label-federal">Federal &amp; Government</div>
+    <h3>SDVOSB, VOSB &amp; HUBZone set-aside eligible</h3>
+    <p>Contracting officers and prime contractors can leverage ZigTech's triple SBA certification for SDVOSB, HUBZone, and small business set-aside vehicles. We support direct awards, subcontracting, and teaming arrangements.</p>
+  </div>
+  <div class="audience-card reveal">
+    <div class="audience-label label-commercial">Commercial &amp; Enterprise</div>
+    <h3>Senior-level expertise without the enterprise overhead</h3>
+    <p>Mid-market and enterprise organizations gain access to Cisco-trained network engineering depth — for observability deployments, network modernization, capacity planning, and cybersecurity program support.</p>
+  </div>
+</div>
+
+<!-- CAPABILITIES -->
+<section id="capabilities">
+  <div class="section-inner">
+    <div class="section-label">Core capabilities</div>
+    <h2 class="section-heading">What we deliver</h2>
+    <p class="section-intro">ZigTech's services span network operations, security, and IT infrastructure — applicable to federal program offices, defense contractors, healthcare networks, financial services, and commercial enterprise IT teams.</p>
+    <div class="caps-grid reveal">
+      <div class="cap-card">
+        <h3>Network observability &amp; AIOps</h3>
+        <p>Real-time telemetry, anomaly detection, and AI-driven performance management for complex multi-vendor environments — on-prem, cloud, or hybrid.</p>
+        <div class="cap-tags">
+          <span class="tag tag-fed">Federal</span>
+          <span class="tag tag-com">Commercial</span>
+          <span class="tag tag-naics">NAICS 541512</span>
+        </div>
+      </div>
+      <div class="cap-card">
+        <h3>Cybersecurity &amp; network defense</h3>
+        <p>NetFlow/IPFIX analytics, traffic analysis, intrusion detection support, and security event monitoring aligned to NIST and zero-trust frameworks.</p>
+        <div class="cap-tags">
+          <span class="tag tag-fed">Federal</span>
+          <span class="tag tag-com">Commercial</span>
+          <span class="tag tag-naics">NAICS 541519</span>
+        </div>
+      </div>
+      <div class="cap-card">
+        <h3>IT infrastructure modernization</h3>
+        <p>Enterprise network design, SD-WAN, cloud network integration, and infrastructure lifecycle management for agencies and commercial IT organizations.</p>
+        <div class="cap-tags">
+          <span class="tag tag-fed">Federal</span>
+          <span class="tag tag-com">Commercial</span>
+          <span class="tag tag-naics">NAICS 541511</span>
+        </div>
+      </div>
+      <div class="cap-card">
+        <h3>Network management &amp; NOC support</h3>
+        <p>Managed network operations, SNMP/NetFlow platform deployment, automation, and capacity forecasting for enterprise and government networks.</p>
+        <div class="cap-tags">
+          <span class="tag tag-fed">Federal</span>
+          <span class="tag tag-com">Commercial</span>
+          <span class="tag tag-naics">NAICS 541513</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE SERVE -->
+<section id="who">
+  <div class="section-inner">
+    <div class="section-label">Who we serve</div>
+    <h2 class="section-heading">Our clients</h2>
+    <p class="section-intro">ZigTech serves organizations where network reliability, security, and performance are mission-critical — from federal agencies to commercial enterprises.</p>
+    <div class="who-grid">
+      <div class="who-card reveal"><div class="who-type">Federal</div><h4>Civilian &amp; defense agencies</h4></div>
+      <div class="who-card reveal"><div class="who-type">Federal</div><h4>VA &amp; DoD programs</h4></div>
+      <div class="who-card reveal"><div class="who-type">Federal</div><h4>Prime contractors &amp; systems integrators</h4></div>
+      <div class="who-card reveal"><div class="who-type">Commercial</div><h4>Healthcare &amp; hospital networks</h4></div>
+      <div class="who-card reveal"><div class="who-type">Commercial</div><h4>Financial services &amp; fintech</h4></div>
+      <div class="who-card reveal"><div class="who-type">Commercial</div><h4>Mid-market enterprise IT</h4></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-label">Leadership</div>
+    <h2 class="section-heading">About ZigTech</h2>
+    <div class="about-grid">
+      <div class="stat-col reveal">
+        <div class="stat-card">
+          <div class="stat-num">20+</div>
+          <div class="stat-label">Years in network infrastructure</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">USN</div>
+          <div class="stat-label">Submarine veteran, service-disabled</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">F500</div>
+          <div class="stat-label">Fortune 500 &amp; federal client experience</div>
+        </div>
+      </div>
+      <div class="about-text reveal">
+        <p>ZigTech was founded by a U.S. Navy submarine veteran with over two decades of enterprise network engineering experience across both federal and commercial sectors. Our principal brings deep technical expertise from senior roles at Cisco and multiple network technology companies serving global enterprise and government clients.</p>
+        <p>We specialize in network observability, AIOps, and IT infrastructure — a high-demand capability set for both federal agencies managing large, multi-cloud network environments and commercial enterprises undergoing digital transformation.</p>
+        <p>Based in Cocoa, Florida, ZigTech is an SBA-certified HUBZone, SDVOSB, and VOSB firm committed to delivering mission-quality outcomes with the discipline and accountability that comes from military service.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-inner">
+    <div class="section-label">Certifications &amp; set-asides</div>
+    <h2 class="section-heading">Federal contracting credentials</h2>
+    <p class="section-intro">ZigTech holds triple SBA set-aside eligibility — giving contracting officers and prime contractors maximum flexibility for small business utilization goals.</p>
+    <div class="cert-grid">
+      <div class="cert-card sdvosb reveal">
+        <div class="cert-type-label">SDVOSB</div>
+        <h3>Service-Disabled Veteran-Owned Small Business</h3>
+        <p>SBA certified. Eligible for SDVOSB set-aside contracts and sole-source awards across all federal agencies including VA.</p>
+        <div class="cert-date">Certified April 10, 2026 · Renewal April 10, 2029</div>
+      </div>
+      <div class="cert-card vosb reveal">
+        <div class="cert-type-label">VOSB</div>
+        <h3>Veteran-Owned Small Business</h3>
+        <p>SBA certified. Eligible for VA VOSB set-aside programs and veteran preference evaluations government-wide.</p>
+        <div class="cert-date">Certified April 10, 2026 · Renewal April 10, 2029</div>
+      </div>
+      <div class="cert-card hub reveal">
+        <div class="cert-type-label">HUBZone</div>
+        <h3>Historically Underutilized Business Zone</h3>
+        <p>SBA certified. Eligible for HUBZone set-asides and 10% price evaluation preference in full-and-open competitions.</p>
+        <div class="cert-date">Certified April 10, 2026 · Renewal April 10, 2029</div>
+      </div>
+      <div class="cert-card sam reveal">
+        <div class="cert-type-label">SAM.gov</div>
+        <h3>System for Award Management</h3>
+        <p>Active SAM.gov registration. All three SBA certifications reflected in profile. Cocoa, FL 32922.</p>
+        <div class="cert-date">Active registration · UEI: [Your UEI] · CAGE: [Your CAGE]</div>
+      </div>
+    </div>
+    <div class="naics-box reveal">
+      <h3>NAICS codes</h3>
+      <div class="naics-list">
+        <div class="naics-row"><span class="naics-code">541511</span><span class="naics-desc">Custom Computer Programming Services</span></div>
+        <div class="naics-row"><span class="naics-code">541512</span><span class="naics-desc">Computer Systems Design Services</span></div>
+        <div class="naics-row"><span class="naics-code">541513</span><span class="naics-desc">Computer Facilities Management Services</span></div>
+        <div class="naics-row"><span class="naics-code">541519</span><span class="naics-desc">Other Computer Related Services</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label">Get in touch</div>
+    <h2 class="section-heading">Contact ZigTech</h2>
+    <div class="contact-grid">
+      <div class="reveal">
+        <p>Whether you're a contracting officer evaluating set-aside options, a prime looking for a teaming partner, or a commercial IT organization exploring network services — we'd like to hear from you. We respond within one business day.</p>
+        <div class="contact-details">
+          <div class="contact-item"><strong>Location</strong><span>Cocoa, FL 32922 (HUBZone)</span></div>
+          <div class="contact-item"><strong>SAM.gov UEI</strong><span>[Your UEI number]</span></div>
+          <div class="contact-item"><strong>CAGE Code</strong><span>[Your CAGE code]</span></div>
+          <div class="contact-item"><strong>Email</strong><span>[Your email address]</span></div>
+          <div class="contact-item"><strong>Phone</strong><span>[Your phone number]</span></div>
+        </div>
+      </div>
+      <div class="contact-form-wrap reveal">
+        <form onsubmit="handleSubmit(event)">
+          <div class="form-field">
+            <label for="name">Name</label>
+            <input type="text" id="name" placeholder="Your name" required>
+          </div>
+          <div class="form-field">
+            <label for="org">Agency or organization</label>
+            <input type="text" id="org" placeholder="Agency / company" required>
+          </div>
+          <div class="form-field">
+            <label for="inquiry">Inquiry type</label>
+            <select id="inquiry">
+              <option>Federal — set-aside / prime contract</option>
+              <option>Federal — subcontracting opportunity</option>
+              <option>Federal — capabilities briefing</option>
+              <option>Commercial — network services inquiry</option>
+              <option>Commercial — teaming / partnership</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="your@email.com" required>
+          </div>
+          <div class="form-field">
+            <label for="message">Message</label>
+            <textarea id="message" placeholder="Brief description of your need..." required></textarea>
+          </div>
+          <button type="submit" class="form-submit">Send inquiry</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">© 2026 ZigTech, LLC · Cocoa, FL · All rights reserved</div>
+  <div class="footer-badges">
+    <span class="cert-badge badge-sdvosb">SDVOSB</span>
+    <span class="cert-badge badge-vosb">VOSB</span>
+    <span class="cert-badge badge-hub">HUBZone</span>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Form submit
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.textContent = 'Message sent ✓';
+    btn.style.background = '#27500A';
+    btn.disabled = true;
+    setTimeout(() => { btn.textContent = 'Send inquiry'; btn.style.background = ''; btn.disabled = false; e.target.reset(); }, 3000);
+  }
+
+  // Smooth nav close on mobile link click
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => document.getElementById('nav-links').classList.remove('open'));
+  });
+</script>
+</body>
+</html>
