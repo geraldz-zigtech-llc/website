@@ -9,789 +9,433 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --blue: #185FA5;
-    --blue-light: #E6F1FB;
-    --blue-mid: #378ADD;
-    --slate: #2D3748;
-    --slate-light: #4A5568;
-    --green-bg: #EAF3DE;
-    --green-text: #27500A;
-    --amber-bg: #FAEEDA;
-    --amber-text: #633806;
-    --gray-bg: #F1EFE8;
-    --gray-text: #444441;
-    --white: #ffffff;
-    --off-white: #FAFAF8;
-    --border: rgba(0,0,0,0.08);
-    --border-strong: rgba(0,0,0,0.14);
-  }
-
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 16px;
-    line-height: 1.7;
-    color: var(--slate);
-    background: var(--white);
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to   { opacity: 1; }
-  }
-  .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
-
-  /* ── NAV ── */
-  nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    padding: 0 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 64px;
-  }
-  .nav-logo img { height: 120px; width: auto; display: block; }
-  .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-    list-style: none;
-  }
-  .nav-links a {
-    font-size: 13.5px;
-    font-weight: 400;
-    color: var(--slate-light);
-    text-decoration: none;
-    letter-spacing: 0.01em;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--blue); }
-  .nav-cta {
-    background: var(--blue);
-    color: white !important;
-    font-size: 13px !important;
-    font-weight: 500 !important;
-    padding: 8px 18px;
-    border-radius: 6px;
-    text-decoration: none;
-    transition: background 0.2s, transform 0.15s !important;
-  }
-  .nav-cta:hover { background: #1450890 !important; transform: translateY(-1px); }
-  .nav-mobile-toggle { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
-  .nav-mobile-toggle span { width: 22px; height: 2px; background: var(--slate); border-radius: 2px; transition: 0.3s; }
-
-  /* ── HERO ── */
-  .hero {
-    padding: 96px 2rem 80px;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-  .cert-strip {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-bottom: 2rem;
-    animation: fadeUp 0.6s ease forwards;
-  }
-  .cert-badge {
-    font-size: 11px;
-    font-weight: 500;
-    padding: 5px 12px;
-    border-radius: 100px;
-    letter-spacing: 0.02em;
-  }
-  .badge-sdvosb { background: var(--blue-light); color: #0C447C; }
-  .badge-vosb   { background: var(--green-bg);   color: var(--green-text); }
-  .badge-hub    { background: var(--amber-bg);   color: var(--amber-text); }
-  .badge-sam    { background: var(--gray-bg);    color: var(--gray-text); }
-
-  .hero-headline {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(36px, 5vw, 58px);
-    font-weight: 400;
-    line-height: 1.15;
-    color: var(--slate);
-    max-width: 760px;
-    margin-bottom: 1.5rem;
-    animation: fadeUp 0.6s 0.1s ease forwards;
-    opacity: 0;
-  }
-  .hero-headline em {
-    font-style: italic;
-    color: var(--blue);
-  }
-  .hero-sub {
-    font-size: 17px;
-    font-weight: 300;
-    color: var(--slate-light);
-    max-width: 560px;
-    line-height: 1.75;
-    margin-bottom: 2.5rem;
-    animation: fadeUp 0.6s 0.2s ease forwards;
-    opacity: 0;
-  }
-  .hero-actions {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    animation: fadeUp 0.6s 0.3s ease forwards;
-    opacity: 0;
-  }
-  .btn-primary {
-    background: var(--blue);
-    color: white;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    padding: 12px 24px;
-    border-radius: 7px;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.15s;
-    display: inline-block;
-  }
-  .btn-primary:hover { background: #145089; transform: translateY(-1px); }
-  .btn-secondary {
-    background: transparent;
-    color: var(--slate);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    padding: 12px 24px;
-    border-radius: 7px;
-    text-decoration: none;
-    border: 1px solid var(--border-strong);
-    cursor: pointer;
-    transition: border-color 0.2s, background 0.2s, transform 0.15s;
-    display: inline-block;
-  }
-  .btn-secondary:hover { border-color: var(--blue); color: var(--blue); transform: translateY(-1px); }
-
-  /* ── AUDIENCE STRIP ── */
-  .audience-strip {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    background: var(--off-white);
-  }
-  .audience-card {
-    padding: 2.5rem 2.5rem;
-  }
-  .audience-card:first-child { border-right: 1px solid var(--border); }
-  .audience-label {
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 0.6rem;
-  }
-  .label-federal { color: var(--blue); }
-  .label-commercial { color: var(--green-text); }
-  .audience-card h3 {
-    font-size: 17px;
-    font-weight: 500;
-    color: var(--slate);
-    margin-bottom: 0.6rem;
-    line-height: 1.4;
-  }
-  .audience-card p {
-    font-size: 14px;
-    font-weight: 300;
-    color: var(--slate-light);
-    line-height: 1.7;
-  }
-
-  /* ── SECTIONS ── */
-  section { padding: 96px 2rem; }
-  .section-inner { max-width: 1100px; margin: 0 auto; }
-  .section-label {
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--blue);
-    margin-bottom: 0.75rem;
-  }
-  .section-heading {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(28px, 3.5vw, 40px);
-    font-weight: 400;
-    color: var(--slate);
-    margin-bottom: 1rem;
-    line-height: 1.2;
-  }
-  .section-intro {
-    font-size: 16px;
-    font-weight: 300;
-    color: var(--slate-light);
-    max-width: 620px;
-    line-height: 1.8;
-    margin-bottom: 3rem;
-  }
-
-  /* ── CAPABILITIES ── */
-  #capabilities { background: var(--white); }
-  .caps-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 1.5px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    overflow: hidden;
-  }
-  .cap-card {
-    background: var(--white);
-    padding: 2rem;
-    transition: background 0.2s;
-  }
-  .cap-card:hover { background: #F8FBFF; }
-  .cap-card h3 {
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--slate);
-    margin-bottom: 0.6rem;
-    line-height: 1.4;
-  }
-  .cap-card p {
-    font-size: 13.5px;
-    font-weight: 300;
-    color: var(--slate-light);
-    line-height: 1.7;
-  }
-  .cap-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-    margin-top: 1rem;
-  }
-  .tag {
-    font-size: 11px;
-    padding: 3px 9px;
-    border-radius: 4px;
-    font-weight: 500;
-  }
-  .tag-fed { background: var(--blue-light); color: #0C447C; }
-  .tag-com { background: var(--green-bg); color: var(--green-text); }
-  .tag-naics { background: var(--gray-bg); color: var(--gray-text); }
-
-  /* ── WHO WE SERVE ── */
-  #who { background: var(--off-white); }
-  .who-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 12px;
-  }
-  .who-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 1.25rem 1.5rem;
-    transition: border-color 0.2s, transform 0.2s;
-  }
-  .who-card:hover { border-color: var(--blue); transform: translateY(-2px); }
-  .who-type {
-    font-size: 10.5px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--slate-light);
-    margin-bottom: 0.35rem;
-  }
-  .who-card h4 {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--slate);
-    line-height: 1.4;
-  }
-
-  /* ── ABOUT ── */
-  #about { background: var(--white); }
-  .about-grid {
-    display: grid;
-    grid-template-columns: 280px 1fr;
-    gap: 4rem;
-    align-items: start;
-  }
-  .stat-col { display: flex; flex-direction: column; gap: 12px; }
-  .stat-card {
-    background: var(--off-white);
-    border-radius: 10px;
-    padding: 1.25rem 1.5rem;
-    border: 1px solid var(--border);
-  }
-  .stat-num {
-    font-family: 'DM Serif Display', serif;
-    font-size: 32px;
-    color: var(--blue);
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-  .stat-label { font-size: 12.5px; color: var(--slate-light); font-weight: 300; }
-  .about-text p {
-    font-size: 15.5px;
-    font-weight: 300;
-    color: var(--slate-light);
-    line-height: 1.85;
-    margin-bottom: 1.25rem;
-  }
-  .about-text p:last-child { margin-bottom: 0; }
-
-  /* ── CERTS ── */
-  #certifications { background: var(--off-white); }
-  .cert-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 1rem;
-    margin-bottom: 2rem;
-  }
-  .cert-card {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.5rem;
-    transition: border-color 0.2s, transform 0.2s;
-  }
-  .cert-card:hover { transform: translateY(-2px); }
-  .cert-card.sdvosb:hover { border-color: var(--blue); }
-  .cert-card.vosb:hover   { border-color: #3B6D11; }
-  .cert-card.hub:hover    { border-color: #854F0B; }
-  .cert-card.sam:hover    { border-color: #888780; }
-  .cert-type-label {
-    font-size: 10.5px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    margin-bottom: 0.5rem;
-  }
-  .cert-card.sdvosb .cert-type-label { color: var(--blue); }
-  .cert-card.vosb   .cert-type-label { color: #3B6D11; }
-  .cert-card.hub    .cert-type-label { color: #854F0B; }
-  .cert-card.sam    .cert-type-label { color: #888780; }
-  .cert-card h3 {
-    font-size: 14.5px;
-    font-weight: 500;
-    color: var(--slate);
-    margin-bottom: 0.4rem;
-    line-height: 1.4;
-  }
-  .cert-card p { font-size: 12.5px; color: var(--slate-light); font-weight: 300; line-height: 1.6; }
-  .cert-date { font-size: 11px; color: #888; margin-top: 0.6rem; }
-
-  .naics-box {
-    background: var(--white);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.5rem 2rem;
-  }
-  .naics-box h3 { font-size: 13px; font-weight: 600; color: var(--slate); margin-bottom: 1rem; letter-spacing: 0.01em; }
-  .naics-list { display: flex; flex-direction: column; gap: 8px; }
-  .naics-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 13.5px;
-    padding: 4px 0;
-    border-bottom: 1px solid var(--border);
-  }
-  .naics-row:last-child { border-bottom: none; }
-  .naics-code { color: var(--blue); font-weight: 600; font-variant-numeric: tabular-nums; }
-  .naics-desc { color: var(--slate-light); font-weight: 300; }
-
-  /* ── CONTACT ── */
-  #contact { background: var(--white); }
-  .contact-grid {
-    display: grid;
-    grid-template-columns: 1fr 1.3fr;
-    gap: 4rem;
-    align-items: start;
-  }
-  .contact-info p {
-    font-size: 15px;
-    font-weight: 300;
-    color: var(--slate-light);
-    line-height: 1.8;
-    margin-bottom: 2rem;
-  }
-  .contact-details { display: flex; flex-direction: column; gap: 14px; }
-  .contact-item strong {
-    display: block;
-    font-size: 10.5px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--slate);
-    margin-bottom: 2px;
-  }
-  .contact-item span { font-size: 14px; color: var(--slate-light); font-weight: 300; }
-  .contact-form-wrap {
-    background: var(--off-white);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 2rem;
-  }
-  .form-field { margin-bottom: 1.1rem; }
-  .form-field label {
-    display: block;
-    font-size: 11.5px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.07em;
-    color: var(--slate);
-    margin-bottom: 6px;
-  }
-  .form-field input,
-  .form-field select,
-  .form-field textarea {
-    width: 100%;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 300;
-    color: var(--slate);
-    background: var(--white);
-    border: 1px solid var(--border-strong);
-    border-radius: 7px;
-    padding: 10px 14px;
-    outline: none;
-    transition: border-color 0.2s;
-    -webkit-appearance: none;
-  }
-  .form-field input:focus,
-  .form-field select:focus,
-  .form-field textarea:focus { border-color: var(--blue); }
-  .form-field textarea { height: 100px; resize: vertical; }
-  .form-submit {
-    width: 100%;
-    background: var(--blue);
-    color: white;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    padding: 12px;
-    border-radius: 7px;
-    border: none;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.15s;
-    margin-top: 0.5rem;
-  }
-  .form-submit:hover { background: #145089; transform: translateY(-1px); }
-
-  /* ── FOOTER ── */
-  footer {
-    background: var(--slate);
-    color: rgba(255,255,255,0.6);
-    padding: 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-  footer .footer-left { font-size: 13px; }
-  footer .footer-badges { display: flex; gap: 8px; }
-  footer .cert-badge { opacity: 0.85; }
-
-  /* ── DIVIDER ── */
-  .section-divider { height: 1px; background: var(--border); }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 860px) {
-    .about-grid { grid-template-columns: 1fr; }
-    .contact-grid { grid-template-columns: 1fr; }
-    .audience-strip { grid-template-columns: 1fr; }
-    .audience-card:first-child { border-right: none; border-bottom: 1px solid var(--border); }
-    .nav-links { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: white; border-bottom: 1px solid var(--border); padding: 1rem 2rem; gap: 1rem; }
-    .nav-links.open { display: flex; }
-    .nav-mobile-toggle { display: flex; }
-    nav { position: relative; }
-    .hero { padding: 64px 1.5rem 48px; }
-    section { padding: 64px 1.5rem; }
-  }
-  @media (max-width: 480px) {
-    .hero-headline { font-size: 30px; }
-    .caps-grid { grid-template-columns: 1fr; }
-    .cert-grid { grid-template-columns: 1fr; }
-    footer { flex-direction: column; align-items: flex-start; }
-  }
+:root {
+--blue: #185FA5;
+--blue-light: #E6F1FB;
+--blue-mid: #378ADD;
+--slate: #2D3748;
+--slate-light: #4A5568;
+--green-bg: #EAF3DE;
+--green-text: #27500A;
+--amber-bg: #FAEEDA;
+--amber-text: #633806;
+--gray-bg: #F1EFE8;
+--gray-text: #444441;
+--white: #ffffff;
+--off-white: #FAFAF8;
+--border: rgba(0,0,0,0.08);
+--border-strong: rgba(0,0,0,0.14);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.7; color: var(--slate); background: var(--white); -webkit-font-smoothing: antialiased; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.nav-logo img { height: 120px; width: auto; display: block; }
+.nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+.nav-links a { font-size: 13.5px; font-weight: 400; color: var(--slate-light); text-decoration: none; letter-spacing: 0.01em; transition: color 0.2s; }
+.nav-links a:hover { color: var(--blue); }
+.nav-cta { background: var(--blue); color: white !important; font-size: 13px !important; font-weight: 500 !important; padding: 8px 18px; border-radius: 6px; text-decoration: none; transition: background 0.2s, transform 0.15s !important; }
+.nav-cta:hover { background: #145089 !important; transform: translateY(-1px); }
+.nav-mobile-toggle { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+.nav-mobile-toggle span { width: 22px; height: 2px; background: var(--slate); border-radius: 2px; transition: 0.3s; }
+.hero { padding: 96px 2rem 80px; max-width: 1100px; margin: 0 auto; }
+.cert-strip { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 2rem; animation: fadeUp 0.6s ease forwards; }
+.cert-badge { font-size: 11px; font-weight: 500; padding: 5px 12px; border-radius: 100px; letter-spacing: 0.02em; }
+.badge-sdvosb { background: var(--blue-light); color: #0C447C; }
+.badge-vosb { background: var(--green-bg); color: var(--green-text); }
+.badge-hub { background: var(--amber-bg); color: var(--amber-text); }
+.badge-sam { background: var(--gray-bg); color: var(--gray-text); }
+.hero-headline { font-family: 'DM Serif Display', serif; font-size: clamp(36px, 5vw, 58px); font-weight: 400; line-height: 1.15; color: var(--slate); max-width: 760px; margin-bottom: 1.5rem; animation: fadeUp 0.6s 0.1s ease forwards; opacity: 0; }
+.hero-headline em { font-style: italic; color: var(--blue); }
+.hero-sub { font-size: 17px; font-weight: 300; color: var(--slate-light); max-width: 560px; line-height: 1.75; margin-bottom: 2.5rem; animation: fadeUp 0.6s 0.2s ease forwards; opacity: 0; }
+.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; animation: fadeUp 0.6s 0.3s ease forwards; opacity: 0; }
+.btn-primary { background: var(--blue); color: white; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; padding: 12px 24px; border-radius: 7px; text-decoration: none; border: none; cursor: pointer; transition: background 0.2s, transform 0.15s; display: inline-block; }
+.btn-primary:hover { background: #145089; transform: translateY(-1px); }
+.btn-secondary { background: transparent; color: var(--slate); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 400; padding: 12px 24px; border-radius: 7px; text-decoration: none; border: 1px solid var(--border-strong); cursor: pointer; transition: border-color 0.2s, background 0.2s, transform 0.15s; display: inline-block; }
+.btn-secondary:hover { border-color: var(--blue); color: var(--blue); transform: translateY(-1px); }
+.audience-strip { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--off-white); }
+.audience-card { padding: 2.5rem 2.5rem; }
+.audience-card:first-child { border-right: 1px solid var(--border); }
+.audience-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.6rem; }
+.label-federal { color: var(--blue); }
+.label-commercial { color: var(--green-text); }
+.audience-card h3 { font-size: 17px; font-weight: 500; color: var(--slate); margin-bottom: 0.6rem; line-height: 1.4; }
+.audience-card p { font-size: 14px; font-weight: 300; color: var(--slate-light); line-height: 1.7; }
+section { padding: 96px 2rem; }
+.section-inner { max-width: 1100px; margin: 0 auto; }
+.section-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--blue); margin-bottom: 0.75rem; }
+.section-heading { font-family: 'DM Serif Display', serif; font-size: clamp(28px, 3.5vw, 40px); font-weight: 400; color: var(--slate); margin-bottom: 1rem; line-height: 1.2; }
+.section-intro { font-size: 16px; font-weight: 300; color: var(--slate-light); max-width: 620px; line-height: 1.8; margin-bottom: 3rem; }
+#capabilities { background: var(--white); }
+.caps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5px; background: var(--border); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.cap-card { background: var(--white); padding: 2rem; transition: background 0.2s; }
+.cap-card:hover { background: #F8FBFF; }
+.cap-card h3 { font-size: 15px; font-weight: 500; color: var(--slate); margin-bottom: 0.6rem; line-height: 1.4; }
+.cap-card p { font-size: 13.5px; font-weight: 300; color: var(--slate-light); line-height: 1.7; }
+.cap-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 1rem; }
+.tag { font-size: 11px; padding: 3px 9px; border-radius: 4px; font-weight: 500; }
+.tag-fed { background: var(--blue-light); color: #0C447C; }
+.tag-com { background: var(--green-bg); color: var(--green-text); }
+.tag-naics { background: var(--gray-bg); color: var(--gray-text); }
+#who { background: var(--off-white); }
+.who-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+.who-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 1.25rem 1.5rem; transition: border-color 0.2s, transform 0.2s; }
+.who-card:hover { border-color: var(--blue); transform: translateY(-2px); }
+.who-type { font-size: 10.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--slate-light); margin-bottom: 0.35rem; }
+.who-card h4 { font-size: 14px; font-weight: 500; color: var(--slate); line-height: 1.4; }
+#about { background: var(--white); }
+.about-grid { display: grid; grid-template-columns: 280px 1fr; gap: 4rem; align-items: start; }
+.stat-col { display: flex; flex-direction: column; gap: 12px; }
+.stat-card { background: var(--off-white); border-radius: 10px; padding: 1.25rem 1.5rem; border: 1px solid var(--border); }
+.stat-num { font-family: 'DM Serif Display', serif; font-size: 32px; color: var(--blue); line-height: 1; margin-bottom: 4px; }
+.stat-label { font-size: 12.5px; color: var(--slate-light); font-weight: 300; }
+.about-text p { font-size: 15.5px; font-weight: 300; color: var(--slate-light); line-height: 1.85; margin-bottom: 1.25rem; }
+.about-text p:last-child { margin-bottom: 0; }
+#teaming { background: var(--off-white); }
+.teaming-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+.teaming-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.75rem; transition: border-color 0.2s, transform 0.2s; }
+.teaming-card:hover { border-color: var(--blue); transform: translateY(-2px); }
+.teaming-partner-label { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--blue); margin-bottom: 0.5rem; }
+.teaming-card h3 { font-size: 15px; font-weight: 500; color: var(--slate); margin-bottom: 0.5rem; line-height: 1.4; }
+.teaming-card p { font-size: 13.5px; font-weight: 300; color: var(--slate-light); line-height: 1.7; }
+.teaming-cta-box { background: var(--blue-light); border: 1px solid rgba(24,95,165,0.15); border-radius: 12px; padding: 1.75rem 2rem; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+.teaming-cta-box p { font-size: 15px; font-weight: 300; color: #0C447C; line-height: 1.7; max-width: 600px; }
+#certifications { background: var(--white); }
+.cert-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+.cert-card { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; transition: border-color 0.2s, transform 0.2s; }
+.cert-card:hover { transform: translateY(-2px); }
+.cert-card.sdvosb:hover { border-color: var(--blue); }
+.cert-card.vosb:hover { border-color: #3B6D11; }
+.cert-card.hub:hover { border-color: #854F0B; }
+.cert-card.sam:hover { border-color: #888780; }
+.cert-type-label { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+.cert-card.sdvosb .cert-type-label { color: var(--blue); }
+.cert-card.vosb .cert-type-label { color: #3B6D11; }
+.cert-card.hub .cert-type-label { color: #854F0B; }
+.cert-card.sam .cert-type-label { color: #888780; }
+.cert-card h3 { font-size: 14.5px; font-weight: 500; color: var(--slate); margin-bottom: 0.4rem; line-height: 1.4; }
+.cert-card p { font-size: 12.5px; color: var(--slate-light); font-weight: 300; line-height: 1.6; }
+.cert-date { font-size: 11px; color: #888; margin-top: 0.6rem; }
+.naics-box { background: var(--off-white); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem 2rem; }
+.naics-box h3 { font-size: 13px; font-weight: 600; color: var(--slate); margin-bottom: 1rem; letter-spacing: 0.01em; }
+.naics-list { display: flex; flex-direction: column; gap: 8px; }
+.naics-row { display: flex; justify-content: space-between; align-items: center; font-size: 13.5px; padding: 4px 0; border-bottom: 1px solid var(--border); }
+.naics-row:last-child { border-bottom: none; }
+.naics-code { color: var(--blue); font-weight: 600; font-variant-numeric: tabular-nums; }
+.naics-desc { color: var(--slate-light); font-weight: 300; }
+#contact { background: var(--off-white); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 4rem; align-items: start; }
+.contact-info p { font-size: 15px; font-weight: 300; color: var(--slate-light); line-height: 1.8; margin-bottom: 2rem; }
+.contact-details { display: flex; flex-direction: column; gap: 14px; }
+.contact-item strong { display: block; font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--slate); margin-bottom: 2px; }
+.contact-item span { font-size: 14px; color: var(--slate-light); font-weight: 300; }
+.contact-form-wrap { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 2rem; }
+.form-field { margin-bottom: 1.1rem; }
+.form-field label { display: block; font-size: 11.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--slate); margin-bottom: 6px; }
+.form-field input, .form-field select, .form-field textarea { width: 100%; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 300; color: var(--slate); background: var(--white); border: 1px solid var(--border-strong); border-radius: 7px; padding: 10px 14px; outline: none; transition: border-color 0.2s; -webkit-appearance: none; }
+.form-field input:focus, .form-field select:focus, .form-field textarea:focus { border-color: var(--blue); }
+.form-field textarea { height: 100px; resize: vertical; }
+.form-submit { width: 100%; background: var(--blue); color: white; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; padding: 12px; border-radius: 7px; border: none; cursor: pointer; transition: background 0.2s, transform 0.15s; margin-top: 0.5rem; }
+.form-submit:hover { background: #145089; transform: translateY(-1px); }
+footer { background: var(--slate); color: rgba(255,255,255,0.6); padding: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+footer .footer-left { font-size: 13px; }
+footer .footer-badges { display: flex; gap: 8px; }
+footer .cert-badge { opacity: 0.85; }
+.section-divider { height: 1px; background: var(--border); }
+@media (max-width: 860px) {
+.about-grid { grid-template-columns: 1fr; }
+.contact-grid { grid-template-columns: 1fr; }
+.audience-strip { grid-template-columns: 1fr; }
+.audience-card:first-child { border-right: none; border-bottom: 1px solid var(--border); }
+.nav-links { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: white; border-bottom: 1px solid var(--border); padding: 1rem 2rem; gap: 1rem; }
+.nav-links.open { display: flex; }
+.nav-mobile-toggle { display: flex; }
+nav { position: relative; }
+.hero { padding: 64px 1.5rem 48px; }
+section { padding: 64px 1.5rem; }
+.teaming-cta-box { flex-direction: column; }
+}
+@media (max-width: 480px) {
+.hero-headline { font-size: 30px; }
+.caps-grid { grid-template-columns: 1fr; }
+.cert-grid { grid-template-columns: 1fr; }
+footer { flex-direction: column; align-items: flex-start; }
+}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <div class="nav-logo">
-   <img src="https://raw.githubusercontent.com/geraldz-zigtech-llc/website/main/ZigTech_llc_logo_nav.png" alt="ZigTech LLC"> 
-  </div>
-  <ul class="nav-links" id="nav-links">
-  <li><a href="#capabilities">Capabilities</a></li>
-    <li><a href="#who">Who we serve</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#certifications">Certifications</a></li>
-    <li><a href="#contact" class="nav-cta">Contact us</a></li>
-  </ul>
-  <div class="nav-mobile-toggle" id="nav-toggle" onclick="document.getElementById('nav-links').classList.toggle('open')">
-    <span></span><span></span><span></span>
-  </div>
+<div class="nav-logo">
+<img src="https://raw.githubusercontent.com/geraldz-zigtech-llc/website/main/ZigTech_llc_logo_nav.png" alt="ZigTech LLC">
+</div>
+<ul class="nav-links" id="nav-links">
+<li><a href="#capabilities">Capabilities</a></li>
+<li><a href="#who">Who we serve</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#teaming">Teaming</a></li>
+<li><a href="#certifications">Certifications</a></li>
+<li><a href="#contact" class="nav-cta">Contact us</a></li>
+</ul>
+<div class="nav-mobile-toggle" id="nav-toggle" onclick="document.getElementById('nav-links').classList.toggle('open')">
+<span></span><span></span><span></span>
+</div>
 </nav>
 
-<!-- HERO -->
 <div class="hero">
-  <div class="cert-strip">
-    <span class="cert-badge badge-sdvosb">SDVOSB — SBA Certified</span>
-    <span class="cert-badge badge-vosb">VOSB — SBA Certified</span>
-    <span class="cert-badge badge-hub">HUBZone — SBA Certified</span>
-    <span class="cert-badge badge-sam">SAM.gov Registered</span>
-  </div>
-  <h1 class="hero-headline">Enterprise network expertise —<br>for <em>government and commercial</em> clients</h1>
-  <p class="hero-sub">ZigTech delivers network observability, cybersecurity, and IT infrastructure solutions to federal agencies, prime contractors, and commercial enterprises. Veteran-led. 20+ years of hands-on experience. Triple set-aside eligible.</p>
-  <div class="hero-actions">
-    <a href="#contact" class="btn-primary">Request a capability briefing</a>
-    <a href="ZigTech_Capabilities_Statement.pdf" class="btn-secondary">Download capabilities statement ↓</a>
-  </div>
+<div class="cert-strip">
+<span class="cert-badge badge-sdvosb">SDVOSB &mdash; SBA Certified</span>
+<span class="cert-badge badge-vosb">VOSB &mdash; SBA Certified</span>
+<span class="cert-badge badge-hub">HUBZone &mdash; SBA Certified</span>
+<span class="cert-badge badge-sam">SAM.gov Registered</span>
+</div>
+<h1 class="hero-headline">Enterprise network expertise &mdash;<br>for <em>government and commercial</em> clients</h1>
+<p class="hero-sub">ZigTech delivers network observability, cybersecurity, and IT infrastructure solutions to federal agencies, prime contractors, and commercial enterprises. Veteran-led. 20+ years of hands-on experience. Triple set-aside eligible.</p>
+<div class="hero-actions">
+<a href="#contact" class="btn-primary">Request a capability briefing</a>
+<a href="ZigTech_Capabilities_Statement.pdf" class="btn-secondary">Download capabilities statement &darr;</a>
+</div>
 </div>
 
-<!-- AUDIENCE STRIP -->
 <div class="audience-strip">
-  <div class="audience-card reveal">
-    <div class="audience-label label-federal">Federal &amp; Government</div>
-    <h3>SDVOSB, VOSB &amp; HUBZone set-aside eligible</h3>
-    <p>Contracting officers and prime contractors can leverage ZigTech's triple SBA certification for SDVOSB, HUBZone, and small business set-aside vehicles. We support direct awards, subcontracting, and teaming arrangements.</p>
-  </div>
-  <div class="audience-card reveal">
-    <div class="audience-label label-commercial">Commercial &amp; Enterprise</div>
-    <h3>Senior-level expertise without the enterprise overhead</h3>
-    <p>Mid-market and enterprise organizations gain access to Cisco-trained network engineering depth — for observability deployments, network modernization, capacity planning, and cybersecurity program support.</p>
-  </div>
+<div class="audience-card reveal">
+<div class="audience-label label-federal">Federal &amp; Government</div>
+<h3>SDVOSB, VOSB &amp; HUBZone set-aside eligible</h3>
+<p>Contracting officers and prime contractors can leverage ZigTech&rsquo;s triple SBA certification for SDVOSB, HUBZone, and small business set-aside vehicles. We support direct awards, subcontracting, and teaming arrangements.</p>
+</div>
+<div class="audience-card reveal">
+<div class="audience-label label-commercial">Commercial &amp; Enterprise</div>
+<h3>Senior-level expertise without the enterprise overhead</h3>
+<p>Mid-market and enterprise organizations gain access to Cisco-trained network engineering depth &mdash; for observability deployments, network modernization, capacity planning, and cybersecurity program support.</p>
+</div>
 </div>
 
-<!-- CAPABILITIES -->
 <section id="capabilities">
-  <div class="section-inner">
-    <div class="section-label">Core capabilities</div>
-    <h2 class="section-heading">What we deliver</h2>
-    <p class="section-intro">ZigTech's services span network operations, security, and IT infrastructure — applicable to federal program offices, defense contractors, healthcare networks, financial services, and commercial enterprise IT teams.</p>
-    <div class="caps-grid reveal">
-      <div class="cap-card">
-        <h3>Network observability &amp; AIOps</h3>
-        <p>Real-time telemetry, anomaly detection, and AI-driven performance management for complex multi-vendor environments — on-prem, cloud, or hybrid.</p>
-        <div class="cap-tags">
-          <span class="tag tag-fed">Federal</span>
-          <span class="tag tag-com">Commercial</span>
-          <span class="tag tag-naics">NAICS 541512</span>
-        </div>
-      </div>
-      <div class="cap-card">
-        <h3>Cybersecurity &amp; network defense</h3>
-        <p>NetFlow/IPFIX analytics, traffic analysis, intrusion detection support, and security event monitoring aligned to NIST and zero-trust frameworks.</p>
-        <div class="cap-tags">
-          <span class="tag tag-fed">Federal</span>
-          <span class="tag tag-com">Commercial</span>
-          <span class="tag tag-naics">NAICS 541519</span>
-        </div>
-      </div>
-      <div class="cap-card">
-        <h3>IT infrastructure modernization</h3>
-        <p>Enterprise network design, SD-WAN, cloud network integration, and infrastructure lifecycle management for agencies and commercial IT organizations.</p>
-        <div class="cap-tags">
-          <span class="tag tag-fed">Federal</span>
-          <span class="tag tag-com">Commercial</span>
-          <span class="tag tag-naics">NAICS 541511</span>
-        </div>
-      </div>
-      <div class="cap-card">
-        <h3>Network management &amp; NOC support</h3>
-        <p>Managed network operations, SNMP/NetFlow platform deployment, automation, and capacity forecasting for enterprise and government networks.</p>
-        <div class="cap-tags">
-          <span class="tag tag-fed">Federal</span>
-          <span class="tag tag-com">Commercial</span>
-          <span class="tag tag-naics">NAICS 541513</span>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="section-inner">
+<div class="section-label">Core capabilities</div>
+<h2 class="section-heading">What we deliver</h2>
+<p class="section-intro">ZigTech&rsquo;s services span network operations, security, and IT infrastructure &mdash; applicable to federal program offices, defense contractors, healthcare networks, financial services, and commercial enterprise IT teams.</p>
+<div class="caps-grid reveal">
+<div class="cap-card">
+<h3>Network observability &amp; AIOps</h3>
+<p>Real-time telemetry, anomaly detection, and AI-driven performance management for complex multi-vendor environments &mdash; on-prem, cloud, or hybrid.</p>
+<div class="cap-tags">
+<span class="tag tag-fed">Federal</span>
+<span class="tag tag-com">Commercial</span>
+<span class="tag tag-naics">NAICS 541512</span>
+</div>
+</div>
+<div class="cap-card">
+<h3>Cybersecurity &amp; network defense</h3>
+<p>NetFlow/IPFIX analytics, traffic analysis, intrusion detection support, and security event monitoring aligned to NIST and zero-trust frameworks.</p>
+<div class="cap-tags">
+<span class="tag tag-fed">Federal</span>
+<span class="tag tag-com">Commercial</span>
+<span class="tag tag-naics">NAICS 541519</span>
+</div>
+</div>
+<div class="cap-card">
+<h3>IT infrastructure modernization</h3>
+<p>Enterprise network design, SD-WAN, cloud network integration, and infrastructure lifecycle management for agencies and commercial IT organizations.</p>
+<div class="cap-tags">
+<span class="tag tag-fed">Federal</span>
+<span class="tag tag-com">Commercial</span>
+<span class="tag tag-naics">NAICS 541511</span>
+</div>
+</div>
+<div class="cap-card">
+<h3>Custom IT solutions &amp; integration</h3>
+<p>Tailored software and systems integration services bridging network infrastructure with enterprise applications, automation platforms, and data pipelines.</p>
+<div class="cap-tags">
+<span class="tag tag-fed">Federal</span>
+<span class="tag tag-com">Commercial</span>
+<span class="tag tag-naics">NAICS 541511</span>
+</div>
+</div>
+</div>
+</div>
 </section>
 
-<!-- WHO WE SERVE -->
 <section id="who">
-  <div class="section-inner">
-    <div class="section-label">Who we serve</div>
-    <h2 class="section-heading">Our clients</h2>
-    <p class="section-intro">ZigTech serves organizations where network reliability, security, and performance are mission-critical — from federal agencies to commercial enterprises.</p>
-    <div class="who-grid">
-      <div class="who-card reveal"><div class="who-type">Federal</div><h4>Civilian &amp; defense agencies</h4></div>
-      <div class="who-card reveal"><div class="who-type">Federal</div><h4>VA &amp; DoD programs</h4></div>
-      <div class="who-card reveal"><div class="who-type">Federal</div><h4>Prime contractors &amp; systems integrators</h4></div>
-      <div class="who-card reveal"><div class="who-type">Commercial</div><h4>Healthcare &amp; hospital networks</h4></div>
-      <div class="who-card reveal"><div class="who-type">Commercial</div><h4>Financial services &amp; fintech</h4></div>
-      <div class="who-card reveal"><div class="who-type">Commercial</div><h4>Mid-market enterprise IT</h4></div>
-    </div>
-  </div>
+<div class="section-inner">
+<div class="section-label">Who we serve</div>
+<h2 class="section-heading">Our clients</h2>
+<p class="section-intro">ZigTech serves organizations where network reliability, security, and performance are mission-critical &mdash; from federal agencies to commercial enterprises.</p>
+<div class="who-grid">
+<div class="who-card reveal"><div class="who-type">Federal</div><h4>Civilian &amp; defense agencies</h4></div>
+<div class="who-card reveal"><div class="who-type">Federal</div><h4>VA &amp; DoD programs</h4></div>
+<div class="who-card reveal"><div class="who-type">Federal</div><h4>Prime contractors &amp; systems integrators</h4></div>
+<div class="who-card reveal"><div class="who-type">Commercial</div><h4>Healthcare &amp; hospital networks</h4></div>
+<div class="who-card reveal"><div class="who-type">Commercial</div><h4>Financial services &amp; fintech</h4></div>
+<div class="who-card reveal"><div class="who-type">Commercial</div><h4>Mid-market enterprise IT</h4></div>
+</div>
+</div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
-  <div class="section-inner">
-    <div class="section-label">Leadership</div>
-    <h2 class="section-heading">About ZigTech</h2>
-    <div class="about-grid">
-      <div class="stat-col reveal">
-        <div class="stat-card">
-          <div class="stat-num">20+</div>
-          <div class="stat-label">Years in network infrastructure</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">USN</div>
-          <div class="stat-label">Submarine veteran, service-disabled</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">F500</div>
-          <div class="stat-label">Fortune 500 &amp; federal client experience</div>
-        </div>
-      </div>
-      <div class="about-text reveal">
-        <p>ZigTech was founded by a U.S. Navy submarine veteran with over two decades of enterprise network engineering experience across both federal and commercial sectors. Our principal brings deep technical expertise from senior roles at Cisco and multiple network technology companies serving global enterprise and government clients.</p>
-        <p>We specialize in network observability, AIOps, and IT infrastructure — a high-demand capability set for both federal agencies managing large, multi-cloud network environments and commercial enterprises undergoing digital transformation.</p>
-        <p>Based in Cocoa, Florida, ZigTech is an SBA-certified HUBZone, SDVOSB, and VOSB firm committed to delivering mission-quality outcomes with the discipline and accountability that comes from military service.</p>
-      </div>
-    </div>
-  </div>
+<div class="section-inner">
+<div class="section-label">Leadership</div>
+<h2 class="section-heading">About ZigTech</h2>
+<div class="about-grid">
+<div class="stat-col reveal">
+<div class="stat-card"><div class="stat-num">20+</div><div class="stat-label">Years in network infrastructure</div></div>
+<div class="stat-card"><div class="stat-num">USN</div><div class="stat-label">Submarine veteran, service-disabled</div></div>
+<div class="stat-card"><div class="stat-num">F500</div><div class="stat-label">Fortune 500 &amp; federal client experience</div></div>
+</div>
+<div class="about-text reveal">
+<p>ZigTech was founded by a U.S. Navy submarine veteran with over two decades of enterprise network engineering experience across both federal and commercial sectors. Our principal brings deep technical expertise from senior roles at Cisco and multiple network technology companies serving global enterprise and government clients.</p>
+<p>We specialize in network observability, AIOps, and IT infrastructure &mdash; a high-demand capability set for both federal agencies managing large, multi-cloud network environments and commercial enterprises undergoing digital transformation.</p>
+<p>Based in Cocoa, Florida, ZigTech is an SBA-certified HUBZone, SDVOSB, and VOSB firm committed to delivering mission-quality outcomes with the discipline and accountability that comes from military service.</p>
+</div>
+</div>
+</div>
 </section>
 
-<!-- CERTIFICATIONS -->
+<section id="teaming">
+<div class="section-inner">
+<div class="section-label">Teaming &amp; partnerships</div>
+<h2 class="section-heading">Stronger together</h2>
+<p class="section-intro">ZigTech actively pursues teaming arrangements with complementary firms to expand our collective reach on federal opportunities. We bring SDVOSB, VOSB, and HUBZone set-aside eligibility alongside deep network infrastructure expertise.</p>
+<div class="teaming-grid">
+<div class="teaming-card reveal">
+<div class="teaming-partner-label">Teaming Partner</div>
+<h3><a href="https://vrtg.io" target="_blank" rel="noopener noreferrer" style="color: var(--slate); text-decoration: none; border-bottom: 1px solid var(--blue);">VRTG Solutions</a></h3>
+<p>ZigTech and <a href="https://vrtg.io" target="_blank" rel="noopener noreferrer" style="color: var(--blue); font-weight: 400;">VRTG Solutions</a> are aligned teaming partners combining veteran-owned small business credentials with complementary IT and technical services capabilities &mdash; positioned to pursue federal opportunities requiring SDVOSB and HUBZone set-aside eligibility. Visit <a href="https://vrtg.io" target="_blank" rel="noopener noreferrer" style="color: var(--blue); font-weight: 400;">vrtg.io</a> to learn more.</p>
+</div>
+<div class="teaming-card reveal">
+<div class="teaming-partner-label">Subcontracting</div>
+<h3>Prime contractor relationships</h3>
+<p>ZigTech is a registered supplier with ManTech, Jacobs, CGI Federal, and Peraton. We actively support prime contractors meeting small business subcontracting goals across network infrastructure and IT services task orders.</p>
+</div>
+<div class="teaming-card reveal">
+<div class="teaming-partner-label">Value we bring</div>
+<h3>Triple set-aside eligibility</h3>
+<p>Our SDVOSB + VOSB + HUBZone certification stack provides primes maximum flexibility for small business utilization across VA, DoD, and civilian agency contracts &mdash; including sole-source and set-aside vehicle eligibility.</p>
+</div>
+</div>
+<div class="teaming-cta-box reveal">
+<p>Looking for a teaming partner with veteran-owned credentials and proven network infrastructure depth? Let&rsquo;s explore how ZigTech can strengthen your next proposal.</p>
+<a href="#contact" class="btn-primary">Discuss teaming</a>
+</div>
+</div>
+</section>
+
 <section id="certifications">
-  <div class="section-inner">
-    <div class="section-label">Certifications &amp; set-asides</div>
-    <h2 class="section-heading">Federal contracting credentials</h2>
-    <p class="section-intro">ZigTech holds triple SBA set-aside eligibility — giving contracting officers and prime contractors maximum flexibility for small business utilization goals.</p>
-    <div class="cert-grid">
-      <div class="cert-card sdvosb reveal">
-        <div class="cert-type-label">SDVOSB</div>
-        <h3>Service-Disabled Veteran-Owned Small Business</h3>
-        <p>SBA certified. Eligible for SDVOSB set-aside contracts and sole-source awards across all federal agencies including VA.</p>
-        <div class="cert-date">Certified April 10, 2026 · Renewal April 10, 2029</div>
-      </div>
-      <div class="cert-card vosb reveal">
-        <div class="cert-type-label">VOSB</div>
-        <h3>Veteran-Owned Small Business</h3>
-        <p>SBA certified. Eligible for VA VOSB set-aside programs and veteran preference evaluations government-wide.</p>
-        <div class="cert-date">Certified April 10, 2026 · Renewal April 10, 2029</div>
-      </div>
-      <div class="cert-card hub reveal">
-        <div class="cert-type-label">HUBZone</div>
-        <h3>Historically Underutilized Business Zone</h3>
-        <p>SBA certified. Eligible for HUBZone set-asides and 10% price evaluation preference in full-and-open competitions.</p>
-        <div class="cert-date">Certified April 10, 2026 · Renewal April 10, 2029</div>
-      </div>
-      <div class="cert-card sam reveal">
-        <div class="cert-type-label">SAM.gov</div>
-        <h3>System for Award Management</h3>
-        <p>Active SAM.gov registration. All three SBA certifications reflected in profile. Cocoa, FL 32922.</p>
-        <div class="cert-date">Active registration · UEI: W3AMXKRXLFE1 · CAGE: 18AP2</div>
-      </div>
-    </div>
-    <div class="naics-box reveal">
-      <h3>NAICS codes</h3>
-      <div class="naics-list">
-        <div class="naics-row"><span class="naics-code">541511</span><span class="naics-desc">Custom Computer Programming Services</span></div>
-        <div class="naics-row"><span class="naics-code">541512</span><span class="naics-desc">Computer Systems Design Services</span></div>
-        <div class="naics-row"><span class="naics-code">541513</span><span class="naics-desc">Computer Facilities Management Services</span></div>
-        <div class="naics-row"><span class="naics-code">541519</span><span class="naics-desc">Other Computer Related Services</span></div>
-      </div>
-    </div>
-  </div>
+<div class="section-inner">
+<div class="section-label">Certifications &amp; set-asides</div>
+<h2 class="section-heading">Federal contracting credentials</h2>
+<p class="section-intro">ZigTech holds triple SBA set-aside eligibility &mdash; giving contracting officers and prime contractors maximum flexibility for small business utilization goals.</p>
+<div class="cert-grid">
+<div class="cert-card sdvosb reveal">
+<div class="cert-type-label">SDVOSB</div>
+<h3>Service-Disabled Veteran-Owned Small Business</h3>
+<p>SBA certified. Eligible for SDVOSB set-aside contracts and sole-source awards across all federal agencies including VA.</p>
+<div class="cert-date">Certified April 10, 2026 &middot; Renewal April 10, 2029</div>
+</div>
+<div class="cert-card vosb reveal">
+<div class="cert-type-label">VOSB</div>
+<h3>Veteran-Owned Small Business</h3>
+<p>SBA certified. Eligible for VA VOSB set-aside programs and veteran preference evaluations government-wide.</p>
+<div class="cert-date">Certified April 10, 2026 &middot; Renewal April 10, 2029</div>
+</div>
+<div class="cert-card hub reveal">
+<div class="cert-type-label">HUBZone</div>
+<h3>Historically Underutilized Business Zone</h3>
+<p>SBA certified. Eligible for HUBZone set-asides and 10% price evaluation preference in full-and-open competitions.</p>
+<div class="cert-date">Certified April 10, 2026 &middot; Renewal April 10, 2029</div>
+</div>
+<div class="cert-card sam reveal">
+<div class="cert-type-label">SAM.gov</div>
+<h3>System for Award Management</h3>
+<p>Active SAM.gov registration. All three SBA certifications reflected in profile. Cocoa, FL 32926.</p>
+<div class="cert-date">Active registration &middot; UEI: W3AMXKRXLFE1 &middot; CAGE: 18AP2</div>
+</div>
+</div>
+<div class="naics-box reveal">
+<h3>NAICS codes</h3>
+<div class="naics-list">
+<div class="naics-row"><span class="naics-code">541511</span><span class="naics-desc">Custom Computer Programming Services</span></div>
+<div class="naics-row"><span class="naics-code">541512</span><span class="naics-desc">Computer Systems Design Services (Primary)</span></div>
+<div class="naics-row"><span class="naics-code">541519</span><span class="naics-desc">Other Computer Related Services</span></div>
+<div class="naics-row"><span class="naics-code">517810</span><span class="naics-desc">All Other Telecommunications</span></div>
+</div>
+</div>
+</div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
-  <div class="section-inner">
-    <div class="section-label">Get in touch</div>
-    <h2 class="section-heading">Contact ZigTech</h2>
-    <div class="contact-grid">
-      <div class="reveal">
-        <p>Whether you're a contracting officer evaluating set-aside options, a prime looking for a teaming partner, or a commercial IT organization exploring network services — we'd like to hear from you. We respond within one business day.</p>
-        <div class="contact-details">
-          <div class="contact-item"><strong>Location</strong><span>Cocoa, FL 32922 (HUBZone)</span></div>
-          <div class="contact-item"><strong>SAM.gov UEI</strong><span>W3AMXKRXLFE1</span></div>
-          <div class="contact-item"><strong>CAGE Code</strong><span>18AP2</span></div>
-          <div class="contact-item"><strong>Email</strong><span>geraldz@zigtech-llc.com</span></div>
-          <div class="contact-item"><strong>Phone</strong><span>+1 252.955.4424</span></div>
-        </div>
-      </div>
-      <div class="contact-form-wrap reveal">
-        <form action="https://formspree.io/f/mjgjqyrv" method="POST">
-          <div class="form-field">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Your name" required>
-          </div>
-          <div class="form-field">
-            <label for="org">Agency or organization</label>
-            <input type="text" id="org" name="organization" placeholder="Agency / company" required>
-          </div>
-          <div class="form-field">
-            <label for="inquiry">Inquiry type</label>
-            <select id="inquiry" name="inquiry_type">
-              <option>Federal — set-aside / prime contract</option>
-              <option>Federal — subcontracting opportunity</option>
-              <option>Federal — capabilities briefing</option>
-              <option>Commercial — network services inquiry</option>
-              <option>Commercial — teaming / partnership</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="form-field">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="your@email.com" required>
-          </div>
-          <div class="form-field">
-            <label for="message">Message</label>
-            <textarea id="message" name="message" placeholder="Brief description of your need..." required></textarea>
-          </div>
-          <button type="submit" class="form-submit">Send inquiry</button>
-        </form>
-      </div>
-    </div>
-  </div>
+<div class="section-inner">
+<div class="section-label">Get in touch</div>
+<h2 class="section-heading">Contact ZigTech</h2>
+<div class="contact-grid">
+<div class="reveal">
+<p>Whether you&rsquo;re a contracting officer evaluating set-aside options, a prime looking for a teaming partner, or a commercial IT organization exploring network services &mdash; we&rsquo;d like to hear from you. We respond within one business day.</p>
+<div class="contact-details">
+<div class="contact-item"><strong>Location</strong><span>Cocoa, FL 32926 (HUBZone)</span></div>
+<div class="contact-item"><strong>SAM.gov UEI</strong><span>W3AMXKRXLFE1</span></div>
+<div class="contact-item"><strong>CAGE Code</strong><span>18AP2</span></div>
+<div class="contact-item"><strong>Email</strong><span>geraldz@zigtech-llc.com</span></div>
+<div class="contact-item"><strong>Phone</strong><span>+1 252.955.4424</span></div>
+</div>
+</div>
+<div class="contact-form-wrap reveal">
+<form action="https://formspree.io/f/mjgjqyrv" method="POST">
+<div class="form-field">
+<label for="name">Name</label>
+<input type="text" id="name" name="name" placeholder="Your name" required>
+</div>
+<div class="form-field">
+<label for="org">Agency or organization</label>
+<input type="text" id="org" name="organization" placeholder="Agency / company" required>
+</div>
+<div class="form-field">
+<label for="inquiry">Inquiry type</label>
+<select id="inquiry" name="inquiry_type">
+<option>Federal &mdash; set-aside / prime contract</option>
+<option>Federal &mdash; subcontracting opportunity</option>
+<option>Federal &mdash; capabilities briefing</option>
+<option>Federal &mdash; teaming / partnership</option>
+<option>Commercial &mdash; network services inquiry</option>
+<option>Commercial &mdash; teaming / partnership</option>
+<option>Other</option>
+</select>
+</div>
+<div class="form-field">
+<label for="email">Email</label>
+<input type="email" id="email" name="email" placeholder="your@email.com" required>
+</div>
+<div class="form-field">
+<label for="message">Message</label>
+<textarea id="message" name="message" placeholder="Brief description of your need..." required></textarea>
+</div>
+<button type="submit" class="form-submit">Send inquiry</button>
+</form>
+</div>
+</div>
+</div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  <div class="footer-left">© 2026 ZigTech, LLC · Cocoa, FL · All rights reserved</div>
-  <div class="footer-badges">
-    <span class="cert-badge badge-sdvosb">SDVOSB</span>
-    <span class="cert-badge badge-vosb">VOSB</span>
-    <span class="cert-badge badge-hub">HUBZone</span>
-  </div>
+<div class="footer-left">&copy; 2026 ZigTech, LLC &middot; Cocoa, FL &middot; All rights reserved</div>
+<div class="footer-badges">
+<span class="cert-badge badge-sdvosb">SDVOSB</span>
+<span class="cert-badge badge-vosb">VOSB</span>
+<span class="cert-badge badge-hub">HUBZone</span>
+</div>
 </footer>
 
 <script>
-  // Scroll reveal
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  // Smooth nav close on mobile link click
-  document.querySelectorAll('.nav-links a').forEach(a => {
-    a.addEventListener('click', () => document.getElementById('nav-links').classList.remove('open'));
-  });
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+document.querySelectorAll('.nav-links a').forEach(a => {
+a.addEventListener('click', () => document.getElementById('nav-links').classList.remove('open'));
+});
 </script>
 </body>
 </html>
