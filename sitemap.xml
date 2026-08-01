@@ -1,39 +1,285 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://zigtech-llc.com/</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://zigtech-llc.com/#capabilities</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://zigtech-llc.com/#teaming</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://zigtech-llc.com/#certifications</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://zigtech-llc.com/#about</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://zigtech-llc.com/#contact</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-</urlset>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Managed IT Services Discovery — ZigTech, LLC</title>
+<meta name="description" content="Tell us about your current IT environment, support setup, and pain points so ZigTech can scope your managed IT services engagement.">
+<meta property="og:title" content="Managed IT Services Discovery — ZigTech, LLC">
+<meta property="og:description" content="Tell us about your current IT environment, support setup, and pain points so ZigTech can scope your managed IT services engagement.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://zigtech-llc.com/msp-assessment.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+--blue: #185FA5;
+--blue-light: #E6F1FB;
+--slate: #2D3748;
+--slate-light: #4A5568;
+--white: #ffffff;
+--off-white: #FAFAF8;
+--border: rgba(0,0,0,0.08);
+--border-strong: rgba(0,0,0,0.14);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+font-family: 'DM Sans', sans-serif;
+font-size: 16px;
+line-height: 1.7;
+color: var(--slate);
+background: var(--white);
+-webkit-font-smoothing: antialiased;
+}
+nav {
+position: sticky;
+top: 0;
+z-index: 100;
+background: rgba(255,255,255,0.95);
+backdrop-filter: blur(12px);
+border-bottom: 1px solid var(--border);
+padding: 0 2rem;
+display: flex;
+align-items: center;
+justify-content: space-between;
+height: 64px;
+}
+.nav-logo img { height: 44px; width: auto; display: block; }
+.nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+.nav-links a { font-size: 13.5px; font-weight: 400; color: var(--slate-light); text-decoration: none; transition: color 0.2s; }
+.nav-links a:hover { color: var(--blue); }
+.wrap { max-width: 780px; margin: 0 auto; padding: 56px 2rem 100px; }
+.intro { margin-bottom: 40px; }
+.section-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--blue); margin-bottom: 0.75rem; }
+.intro h1 { font-family: 'DM Serif Display', serif; font-size: clamp(28px, 4vw, 40px); font-weight: 400; color: var(--slate); margin-bottom: 1rem; line-height: 1.2; }
+.intro p { font-size: 16px; font-weight: 300; color: var(--slate-light); max-width: 620px; line-height: 1.8; }
+.card { background: var(--off-white); border: 1px solid var(--border); border-radius: 14px; padding: 2rem; margin-bottom: 20px; }
+.card h2 { font-size: 16px; font-weight: 600; color: var(--slate); margin-bottom: 4px; }
+.card .section-note { font-size: 13.5px; color: var(--slate-light); font-weight: 300; margin-bottom: 20px; }
+.field { margin-bottom: 20px; }
+label { display: block; font-size: 11.5px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.07em; color: var(--slate); margin-bottom: 6px; }
+label .optional { font-weight: 400; text-transform: none; letter-spacing: 0; color: var(--slate-light); font-size: 12px; }
+input[type="text"], input[type="email"], input[type="tel"], input[type="number"], select, textarea {
+width: 100%; font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 300; color: var(--slate);
+background: var(--white); border: 1px solid var(--border-strong); border-radius: 7px; padding: 11px 14px; outline: none;
+transition: border-color 0.2s; -webkit-appearance: none;
+}
+textarea { min-height: 80px; resize: vertical; }
+input:focus, select:focus, textarea:focus { border-color: var(--blue); }
+.checkbox-group, .radio-group { display: flex; flex-wrap: wrap; gap: 10px 20px; }
+.checkbox-group label, .radio-group label { display: flex; align-items: center; gap: 8px; font-weight: 400; text-transform: none; letter-spacing: 0; font-size: 13.5px; margin-bottom: 0; color: var(--slate); }
+.checkbox-group input, .radio-group input { width: auto; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.four-col { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+@media (max-width: 620px) { .four-col { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .two-col { grid-template-columns: 1fr; } .card { padding: 1.5rem; } }
+.submit-row { text-align: center; margin-top: 28px; }
+button { background: var(--blue); color: white; font-family: 'DM Sans', sans-serif; border: none; padding: 14px 40px; border-radius: 999px; font-size: 15px; font-weight: 500; cursor: pointer; transition: background 0.2s, transform 0.15s; }
+button:hover { background: #145089; transform: translateY(-1px); }
+.footnote { text-align: center; font-size: 12.5px; color: var(--slate-light); font-weight: 300; margin-top: 14px; }
+footer { background: var(--slate); color: rgba(255,255,255,0.6); padding: 2rem; text-align: center; font-size: 13px; }
+.mini-label { font-size: 10.5px; font-weight: 500; color: var(--slate-light); text-transform: none; letter-spacing: 0; text-align: center; margin-bottom: 4px; display: block; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo"><img src="https://raw.githubusercontent.com/geraldz-zigtech-llc/website/main/ZigTech_llc_logo_nav.png" alt="ZigTech LLC"></div>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#capabilities">Capabilities</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="wrap">
+  <div class="intro">
+    <div class="section-label">Managed IT services intake</div>
+    <h1>Let's scope your IT environment</h1>
+    <p>This helps us understand your current setup, support situation, and pain points before we talk, so our first call is a real conversation about your environment instead of a fact-finding mission. Takes about 10&ndash;15 minutes. If you're not sure about something, just say so.</p>
+  </div>
+
+  <form action="https://formsubmit.co/geraldz@zigtech-llc.com" method="POST">
+    <input type="hidden" name="_subject" value="New Managed IT Services Discovery Submission">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_next" value="https://zigtech-llc.com/thank-you.html">
+    <input type="hidden" name="_autoresponse" value="Thanks for filling out ZigTech's managed IT services discovery form. We've received your submission and will follow up within one business day to schedule a discovery call. — ZigTech, LLC">
+    <input type="text" name="_honey" style="display:none">
+
+    <div class="card">
+      <h2>Contact Info</h2>
+      <p class="section-note">To whom are we speaking, and what's your role?</p>
+      <div class="two-col">
+        <div class="field"><label for="name">Your Name *</label><input type="text" id="name" name="Your Name" required></div>
+        <div class="field"><label for="title">Title / Role *</label><input type="text" id="title" name="Title/Role" placeholder="e.g. Office Manager, IT Director, Owner" required></div>
+      </div>
+      <div class="two-col">
+        <div class="field"><label for="business">Business Name *</label><input type="text" id="business" name="Business Name" required></div>
+        <div class="field"><label for="location">Location <span class="optional">(city/state)</span></label><input type="text" id="location" name="Location"></div>
+      </div>
+      <div class="two-col">
+        <div class="field"><label for="email">Email *</label><input type="email" id="email" name="Email" required></div>
+        <div class="field"><label for="phone">Phone</label><input type="tel" id="phone" name="Phone"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Decision-Making &amp; Stakeholders</h2>
+      <div class="field">
+        <label>Are you responsible for recommendation and purchase decisions for IT services?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="IT Decision Authority" value="Yes, I decide"> Yes, I decide</label>
+          <label><input type="radio" name="IT Decision Authority" value="I recommend, someone else approves"> I recommend, someone else approves</label>
+          <label><input type="radio" name="IT Decision Authority" value="Not my call"> Not my call</label>
+        </div>
+      </div>
+      <div class="field"><label for="stakeholders">Other stakeholders we should include in a discovery call? <span class="optional">(names/titles)</span></label><input type="text" id="stakeholders" name="Other Stakeholders"></div>
+    </div>
+
+    <div class="card">
+      <h2>Business Profile</h2>
+      <div class="two-col">
+        <div class="field"><label for="vertical">Vertical market/industry <span class="optional">(retail, finance, healthcare, etc.)</span></label><input type="text" id="vertical" name="Vertical Market"></div>
+        <div class="field"><label for="years-business">How long have you been in business?</label><input type="text" id="years-business" name="Years in Business"></div>
+      </div>
+      <div class="field"><label for="physical-location">Do you have a physical location where most of your computers are located?</label><input type="text" id="physical-location" name="Physical Location Details" placeholder="e.g. single office in Orlando, 3 branch locations, fully remote"></div>
+    </div>
+
+    <div class="card">
+      <h2>Current IT Support</h2>
+      <div class="field">
+        <label>Are you currently working with a managed service provider?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="Current MSP" value="Yes"> Yes</label>
+          <label><input type="radio" name="Current MSP" value="No"> No</label>
+          <label><input type="radio" name="Current MSP" value="Informal/internal only"> Informal/internal only</label>
+        </div>
+      </div>
+      <div class="field">
+        <label>Under a formal service agreement, or pay-as-you-go?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="Agreement Type" value="Formal agreement"> Formal agreement</label>
+          <label><input type="radio" name="Agreement Type" value="Pay as you go"> Pay as you go</label>
+          <label><input type="radio" name="Agreement Type" value="N/A"> N/A</label>
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="field"><label for="renewal">If formal agreement, when does it expire/renew?</label><input type="text" id="renewal" name="Agreement Renewal Date"></div>
+        <div class="field"><label for="covers">What does it currently cover?</label><input type="text" id="covers" name="Current Agreement Coverage"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Users &amp; Endpoints</h2>
+      <div class="field">
+        <label>How many total users do you have?</label>
+        <input type="number" name="Total Users" min="0">
+      </div>
+      <div class="field">
+        <label>Breakdown of users</label>
+        <div class="four-col">
+          <div><span class="mini-label">Full-time</span><input type="number" name="Users Full-Time" min="0"></div>
+          <div><span class="mini-label">Part-time</span><input type="number" name="Users Part-Time" min="0"></div>
+          <div><span class="mini-label">In-office</span><input type="number" name="Users In-Office" min="0"></div>
+          <div><span class="mini-label">Remote</span><input type="number" name="Users Remote" min="0"></div>
+          <div><span class="mini-label">Hybrid</span><input type="number" name="Users Hybrid" min="0"></div>
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="field"><label for="endpoints">Total endpoints <span class="optional">(servers, desktops, laptops, mobile)</span></label><input type="number" id="endpoints" name="Total Endpoints" min="0"></div>
+        <div class="field"><label for="workstation-age">Approximate age of workstations/servers</label><input type="text" id="workstation-age" name="Workstation/Server Age"></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Backup &amp; Security</h2>
+      <div class="field">
+        <label>Do you have a backup and recovery solution?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="Backup Solution" value="Yes, on-prem"> Yes, on-prem</label>
+          <label><input type="radio" name="Backup Solution" value="Yes, SaaS/cloud"> Yes, SaaS/cloud</label>
+          <label><input type="radio" name="Backup Solution" value="Yes, both"> Yes, both</label>
+          <label><input type="radio" name="Backup Solution" value="No"> No</label>
+        </div>
+      </div>
+      <div class="field">
+        <label>Confident it covers all your use cases?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="Backup Confidence" value="Yes, confident"> Yes, confident</label>
+          <label><input type="radio" name="Backup Confidence" value="Somewhat"> Somewhat</label>
+          <label><input type="radio" name="Backup Confidence" value="Not confident"> Not confident</label>
+          <label><input type="radio" name="Backup Confidence" value="Not sure"> Not sure</label>
+        </div>
+      </div>
+      <div class="field">
+        <label>Any security incidents in the past year?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="Security Incidents" value="Yes"> Yes</label>
+          <label><input type="radio" name="Security Incidents" value="No"> No</label>
+          <label><input type="radio" name="Security Incidents" value="Not sure"> Not sure</label>
+        </div>
+      </div>
+      <div class="field"><label for="incident-notes">If yes, brief description <span class="optional">(optional)</span></label><textarea id="incident-notes" name="Security Incident Notes"></textarea></div>
+    </div>
+
+    <div class="card">
+      <h2>Pain Points &amp; Motivation</h2>
+      <div class="field"><label for="problems">What IT-related problems are currently reducing employee productivity or IT efficiency?</label><textarea id="problems" name="Current IT Problems"></textarea></div>
+      <div class="field">
+        <label>Has another IT provider already failed to solve this?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="Prior Provider Failed" value="Yes"> Yes</label>
+          <label><input type="radio" name="Prior Provider Failed" value="No"> No</label>
+          <label><input type="radio" name="Prior Provider Failed" value="N/A, no prior provider"> N/A, no prior provider</label>
+        </div>
+      </div>
+      <div class="field"><label for="why-now">Why are you starting to look for help with your IT operations now?</label><textarea id="why-now" name="Reason For Looking Now"></textarea></div>
+    </div>
+
+    <div class="card">
+      <h2>Patching &amp; Endpoint Management</h2>
+      <div class="field">
+        <label>Confident in your current patching solution's ability to protect remote/hybrid endpoints?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="Patching Confidence" value="Yes, confident"> Yes, confident</label>
+          <label><input type="radio" name="Patching Confidence" value="Somewhat"> Somewhat</label>
+          <label><input type="radio" name="Patching Confidence" value="Not confident"> Not confident</label>
+          <label><input type="radio" name="Patching Confidence" value="No patching solution"> No patching solution</label>
+        </div>
+      </div>
+      <div class="field">
+        <label>Do you have a mobile device management (MDM) solution for Android and Apple devices?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="MDM Solution" value="Yes, both platforms"> Yes, both platforms</label>
+          <label><input type="radio" name="MDM Solution" value="Yes, one platform only"> Yes, one platform only</label>
+          <label><input type="radio" name="MDM Solution" value="No"> No</label>
+        </div>
+      </div>
+      <div class="field">
+        <label>Interested in consolidating multiple endpoint management tools into a single platform?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="Consolidation Interest" value="Yes"> Yes</label>
+          <label><input type="radio" name="Consolidation Interest" value="No"> No</label>
+          <label><input type="radio" name="Consolidation Interest" value="Not sure / need more info"> Not sure / need more info</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Anything Else?</h2>
+      <div class="field"><label for="other">Anything not covered above we should know before we talk?</label><textarea id="other" name="Additional Notes"></textarea></div>
+    </div>
+
+    <div class="submit-row">
+      <button type="submit">Submit</button>
+      <p class="footnote">We'll follow up to schedule a discovery call and go from there.</p>
+    </div>
+  </form>
+</div>
+
+<footer>© 2026 ZigTech, LLC · Cocoa, FL · All rights reserved</footer>
+
+</body>
+</html>
