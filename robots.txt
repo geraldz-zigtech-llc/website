@@ -1,11 +1,15 @@
 User-agent: *
 Allow: /
+Disallow: /thank-you.html
 
 # AI search bots — explicitly welcome
 User-agent: OAI-SearchBot
 Allow: /
 
 User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
 Allow: /
 
 User-agent: PerplexityBot
@@ -15,6 +19,12 @@ User-agent: ClaudeBot
 Allow: /
 
 User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Amazonbot
 Allow: /
 
 Sitemap: https://zigtech-llc.com/sitemap.xml
