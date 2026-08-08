@@ -403,6 +403,25 @@ border-bottom: 1px solid var(--border);
 .naics-row:last-child { border-bottom: none; }
 .naics-code { color: var(--blue); font-weight: 600; font-variant-numeric: tabular-nums; }
 .naics-desc { color: var(--slate-light); font-weight: 300; }
+#faq { background: var(--white); }
+.faq-item {
+border-bottom: 1px solid var(--border);
+padding: 1.5rem 0;
+}
+.faq-item:last-child { border-bottom: none; }
+.faq-item h3 {
+font-size: 15px;
+font-weight: 500;
+color: var(--slate);
+margin-bottom: 0.5rem;
+line-height: 1.4;
+}
+.faq-item p {
+font-size: 14px;
+font-weight: 300;
+color: var(--slate-light);
+line-height: 1.75;
+}
 #contact { background: var(--white); }
 .contact-grid {
 display: grid;
@@ -515,6 +534,129 @@ footer { flex-direction: column; align-items: flex-start; }
 }
 </style>
 <link rel="icon" type="image/png" href="zigtech-favicon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a HUBZone-certified IT contractor?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A HUBZone-certified IT contractor is a small business that the Small Business Administration has verified as being located in and employing residents of a Historically Underutilized Business Zone. HUBZone certification gives contracting officers a 10 percent price evaluation preference in full and open competitions and allows agencies to set aside contracts exclusively for HUBZone firms. ZigTech, LLC is SBA-certified HUBZone, based in Cocoa, Florida."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who does SDVOSB IT contracting near Cocoa, Florida?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ZigTech, LLC is a Service-Disabled Veteran-Owned Small Business based in Cocoa, Florida, providing network observability, cybersecurity, and IT infrastructure services to federal agencies and commercial clients. ZigTech is SBA-certified SDVOSB and eligible for sole-source and set-aside awards, including VA contracts."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is network observability?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Network observability is the practice of using real-time telemetry, anomaly detection, and analytics to understand the health and performance of a network, rather than relying solely on traditional uptime monitoring. It gives IT teams visibility into multi-vendor, on-premises, cloud, and hybrid environments so problems can be identified before they cause outages. ZigTech specializes in network observability and AIOps for both federal and commercial networks."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does ZigTech only work with federal agencies, or also state, local, education, and commercial clients?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ZigTech works across all four. On the federal side, ZigTech supports civilian and defense agencies, VA and DoD programs, and prime contractors through its SDVOSB, VOSB, and HUBZone certifications. ZigTech also serves SLED clients, including state agencies, county and municipal government, and school districts and universities. On the commercial (B2B) side, ZigTech provides network engineering, managed IT services, and cybersecurity support to mid-market enterprises, healthcare networks, financial services firms, and small businesses modernizing their web presence."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What certifications does ZigTech, LLC hold?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ZigTech, LLC holds triple SBA certification as a Service-Disabled Veteran-Owned Small Business (SDVOSB), Veteran-Owned Small Business (VOSB), and Historically Underutilized Business Zone (HUBZone) firm. ZigTech is also actively registered in SAM.gov under UEI W3AMXKRXLFE1 and CAGE code 18AP2."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What NAICS codes does ZigTech operate under?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ZigTech's primary NAICS codes are 541511 (Custom Computer Programming Services), 541512 (Computer Systems Design Services), and 541519 (Other Computer Related Services). ZigTech also operates under 517110, 517312, and 517810 for telecommunications-related work."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I request a capabilities briefing from ZigTech?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Contracting officers, prime contractors, and commercial organizations can request a capabilities briefing by contacting ZigTech directly at geraldz@zigtech-llc.com or (252) 955-4424, or by submitting an inquiry through the contact form on zigtech-llc.com."
+      }
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "ZigTech, LLC",
+  "alternateName": "ZigTech LLC",
+  "url": "https://zigtech-llc.com",
+  "logo": "https://raw.githubusercontent.com/geraldz-zigtech-llc/website/main/ZigTech_llc_logo_nav.png",
+  "description": "SBA-certified SDVOSB, VOSB, and HUBZone IT firm specializing in network observability, cybersecurity, infrastructure, managed services, and website modernization for federal, SLED, and commercial clients.",
+  "email": "geraldz@zigtech-llc.com",
+  "telephone": "+1-252-955-4424",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Cocoa",
+    "addressRegion": "FL",
+    "postalCode": "32922",
+    "addressCountry": "US"
+  },
+  "founder": {
+    "@type": "Person",
+    "name": "Gerald Ziegler",
+    "jobTitle": "Founder & Principal",
+    "description": "U.S. Navy submarine veteran with over two decades of enterprise network engineering experience."
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "United States"
+  },
+  "knowsAbout": [
+    "Network observability",
+    "AIOps",
+    "Cybersecurity",
+    "IT infrastructure modernization",
+    "Managed IT services",
+    "SD-WAN",
+    "Federal contracting",
+    "SDVOSB",
+    "HUBZone",
+    "VOSB",
+    "SLED contracting"
+  ],
+  "naics": ["541511", "541512", "541519", "517110", "517312", "517810"],
+  "identifier": [
+    {
+      "@type": "PropertyValue",
+      "propertyID": "SAM UEI",
+      "value": "W3AMXKRXLFE1"
+    },
+    {
+      "@type": "PropertyValue",
+      "propertyID": "CAGE Code",
+      "value": "18AP2"
+    }
+  ],
+  "sameAs": [
+    "https://www.linkedin.com/company/zigtech-llc"
+  ]
+}
+</script>
 </head>
 <body>
 <!-- NAV -->
@@ -528,6 +670,7 @@ footer { flex-direction: column; align-items: flex-start; }
 <li><a href="#who">Who we serve</a></li>
 <li><a href="#about">About</a></li>
 <li><a href="#certifications">Certifications</a></li>
+<li><a href="#faq">FAQ</a></li>
 <li><a href="discovery.html">Website Project?</a></li>
 <li><a href="msp-assessment.html">Managed IT Assessment</a></li>
 <li><a href="#contact" class="nav-cta">Contact us</a></li>
@@ -720,6 +863,50 @@ footer { flex-direction: column; align-items: flex-start; }
 <div class="naics-row"><span class="naics-code">517810</span><span class="naics-desc">All Other Telecommunications</span></div>
 </div>
 </div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+<div class="section-inner">
+<div class="section-label">FAQ</div>
+<h2 class="section-heading">Frequently asked questions</h2>
+
+<div class="faq-item">
+<h3>What is a HUBZone-certified IT contractor?</h3>
+<p>A HUBZone-certified IT contractor is a small business that the Small Business Administration has verified as being located in and employing residents of a Historically Underutilized Business Zone. HUBZone certification gives contracting officers a 10 percent price evaluation preference in full and open competitions and allows agencies to set aside contracts exclusively for HUBZone firms. ZigTech, LLC is SBA-certified HUBZone, based in Cocoa, Florida.</p>
+</div>
+
+<div class="faq-item">
+<h3>Who does SDVOSB IT contracting near Cocoa, Florida?</h3>
+<p>ZigTech, LLC is a Service-Disabled Veteran-Owned Small Business based in Cocoa, Florida, providing network observability, cybersecurity, and IT infrastructure services to federal agencies and commercial clients. ZigTech is SBA-certified SDVOSB and eligible for sole-source and set-aside awards, including VA contracts.</p>
+</div>
+
+<div class="faq-item">
+<h3>What is network observability?</h3>
+<p>Network observability is the practice of using real-time telemetry, anomaly detection, and analytics to understand the health and performance of a network, rather than relying solely on traditional uptime monitoring. It gives IT teams visibility into multi-vendor, on-premises, cloud, and hybrid environments so problems can be identified before they cause outages. ZigTech specializes in network observability and AIOps for both federal and commercial networks.</p>
+</div>
+
+<div class="faq-item">
+<h3>Does ZigTech only work with federal agencies, or also state, local, education, and commercial clients?</h3>
+<p>ZigTech works across all four. On the federal side, ZigTech supports civilian and defense agencies, VA and DoD programs, and prime contractors through its SDVOSB, VOSB, and HUBZone certifications. ZigTech also serves SLED clients, including state agencies, county and municipal government, and school districts and universities. On the commercial (B2B) side, ZigTech provides network engineering, managed IT services, and cybersecurity support to mid-market enterprises, healthcare networks, financial services firms, and small businesses modernizing their web presence.</p>
+</div>
+
+<div class="faq-item">
+<h3>What certifications does ZigTech, LLC hold?</h3>
+<p>ZigTech, LLC holds triple SBA certification as a Service-Disabled Veteran-Owned Small Business (SDVOSB), Veteran-Owned Small Business (VOSB), and Historically Underutilized Business Zone (HUBZone) firm. ZigTech is also actively registered in SAM.gov under UEI W3AMXKRXLFE1 and CAGE code 18AP2.</p>
+</div>
+
+<div class="faq-item">
+<h3>What NAICS codes does ZigTech operate under?</h3>
+<p>ZigTech's primary NAICS codes are 541511 (Custom Computer Programming Services), 541512 (Computer Systems Design Services), and 541519 (Other Computer Related Services). ZigTech also operates under 517110, 517312, and 517810 for telecommunications-related work.</p>
+</div>
+
+<div class="faq-item">
+<h3>How do I request a capabilities briefing from ZigTech?</h3>
+<p>Contracting officers, prime contractors, and commercial organizations can request a capabilities briefing by contacting ZigTech directly at geraldz@zigtech-llc.com or (252) 955-4424, or by submitting an inquiry through the contact form on zigtech-llc.com.</p>
+</div>
+
 </div>
 </section>
 
