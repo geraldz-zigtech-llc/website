@@ -403,6 +403,31 @@ border-bottom: 1px solid var(--border);
 .naics-row:last-child { border-bottom: none; }
 .naics-code { color: var(--blue); font-weight: 600; font-variant-numeric: tabular-nums; }
 .naics-desc { color: var(--slate-light); font-weight: 300; }
+#partners { background: var(--off-white); }
+.partners-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+gap: 1rem;
+}
+.partner-card {
+background: var(--white);
+border: 1px solid var(--border);
+border-radius: 10px;
+padding: 1.5rem 1rem;
+text-align: center;
+text-decoration: none;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+gap: 0.5rem;
+min-height: 100px;
+transition: border-color 0.2s, transform 0.2s;
+}
+.partner-card:hover { border-color: var(--blue); transform: translateY(-2px); }
+.partner-logo { max-height: 36px; max-width: 100%; object-fit: contain; }
+.partner-name { font-size: 12.5px; font-weight: 500; color: var(--slate); }
+.partner-type { font-size: 10.5px; color: var(--slate-light); font-weight: 300; }
 #faq { background: var(--white); }
 .faq-item {
 border-bottom: 1px solid var(--border);
@@ -670,6 +695,7 @@ footer { flex-direction: column; align-items: flex-start; }
 <li><a href="#who">Who we serve</a></li>
 <li><a href="#about">About</a></li>
 <li><a href="#certifications">Certifications</a></li>
+<li><a href="#partners">Partners</a></li>
 <li><a href="#faq">FAQ</a></li>
 <li><a href="discovery.html">Website Project?</a></li>
 <li><a href="msp-assessment.html">Managed IT Assessment</a></li>
@@ -862,6 +888,91 @@ footer { flex-direction: column; align-items: flex-start; }
 <div class="naics-row"><span class="naics-code">517312</span><span class="naics-desc">Wireless Telecommunications Carriers</span></div>
 <div class="naics-row"><span class="naics-code">517810</span><span class="naics-desc">All Other Telecommunications</span></div>
 </div>
+</div>
+</div>
+</section>
+
+<!-- PARTNERS -->
+<section id="partners">
+<div class="section-inner">
+<div class="section-label">Ecosystem</div>
+<h2 class="section-heading">Partner network</h2>
+<p class="section-intro">ZigTech holds active reseller and partner program memberships with leading technology vendors and distributors, enabling us to source, quote, and deliver best-in-class solutions for federal and commercial clients.</p>
+
+<div class="section-label" style="margin-top:2.5rem;margin-bottom:1rem;">Vendors &amp; OEM</div>
+<div class="partners-grid">
+<a href="https://www.adobe.com/partners.html" target="_blank" rel="noopener noreferrer" class="partner-card reveal">
+<span class="partner-name">Adobe</span>
+<span class="partner-type">Registered Reseller</span>
+</a>
+
+<a href="https://www.cisco.com/c/en/us/partners.html" target="_blank" rel="noopener noreferrer" class="partner-card reveal">
+<span class="partner-name">Cisco</span>
+<span class="partner-type">US Federal Authorized Partner</span>
+</a>
+
+<a href="https://www.dell.com/en-us/dt/partners/partner-program.htm" target="_blank" rel="noopener noreferrer" class="partner-card reveal">
+<span class="partner-name">Dell Technologies Federal</span>
+<span class="partner-type">Authorized Partner</span>
+</a>
+
+<a href="https://www.fortinet.com/partners" target="_blank" rel="noopener noreferrer" class="partner-card reveal">
+<span class="partner-name">Fortinet</span>
+<span class="partner-type">Federal Channel Partner</span>
+</a>
+
+<a href="https://www.hpe.com/us/en/partners.html" target="_blank" rel="noopener noreferrer" class="partner-card reveal">
+<span class="partner-name">HPE</span>
+<span class="partner-type">Partner</span>
+</a>
+
+<a href="https://www.ibm.com/partnerworld" target="_blank" rel="noopener noreferrer" class="partner-card reveal">
+<span class="partner-name">IBM</span>
+<span class="partner-type">Business Partner</span>
+</a>
+
+<a href="https://partner.microsoft.com" target="_blank" rel="noopener noreferrer" class="partner-card reveal">
+<span class="partner-name">Microsoft</span>
+<span class="partner-type">AI Cloud Partner &bull; CSP Reseller</span>
+</a>
+
+<a href="https://www.proofpoint.com/us/partners" target="_blank" rel="noopener noreferrer" class="partner-card reveal">
+<span class="partner-name">Proofpoint</span>
+<span class="partner-type">CORE Partner</span>
+</a>
+
+<a href="https://www.servicenow.com/partners.html" target="_blank" rel="noopener noreferrer" class="partner-card reveal">
+<span class="partner-name">ServiceNow</span>
+<span class="partner-type">Partner</span>
+</a>
+
+<a href="https://www.splunk.com/en_us/partners.html" target="_blank" rel="noopener noreferrer" class="partner-card reveal">
+<span class="partner-name">Splunk</span>
+<span class="partner-type">A Cisco Company &bull; Partner</span>
+</a>
+</div>
+
+<div class="section-label" style="margin-top:3rem;margin-bottom:1rem;">Distributors &amp; Suppliers</div>
+<div class="partners-grid">
+<a href="https://www.carahsoft.com" target="_blank" rel="noopener noreferrer" class="partner-card reveal">
+<span class="partner-name">Carahsoft</span>
+<span class="partner-type">Atlassian Tier 2 Channel Partner</span>
+</a>
+
+<a href="https://www.componentsource.com" target="_blank" rel="noopener noreferrer" class="partner-card reveal">
+<span class="partner-name">ComponentSource</span>
+<span class="partner-type">Authorized Reseller</span>
+</a>
+
+<a href="https://www.pax8.com" target="_blank" rel="noopener noreferrer" class="partner-card reveal">
+<span class="partner-name">PAX8</span>
+<span class="partner-type">Cloud Distributor</span>
+</a>
+
+<a href="https://www.tdsynnex.com" target="_blank" rel="noopener noreferrer" class="partner-card reveal">
+<span class="partner-name">TD SYNNEX</span>
+<span class="partner-type">IT Distributor &bull; DAP Member</span>
+</a>
 </div>
 </div>
 </section>
