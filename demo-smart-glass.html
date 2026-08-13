@@ -156,6 +156,8 @@ section { padding: 56px 2rem; }
   box-shadow: 0 1px 2px rgba(0,0,0,0.04);
 }
 .glass-panel svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.glass-panel img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.glass-panel img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
 .frost-layer {
   position: absolute;
   inset: 0;
@@ -334,7 +336,7 @@ footer a:hover { color: #fff; }
 <div class="hero">
   <div class="section-label">Concept demo</div>
   <h1 class="hero-headline">Switchable smart glass — <em>clear to opaque</em>, on command</h1>
-  <p class="hero-sub">Three ways to build the same effect for a glass &amp; window film site: an instant toggle, an animated crossfade, and a draggable before/after reveal. Same illustrated panel, three interaction feels — pick the one that fits the brand.</p>
+  <p class="hero-sub">Three ways to build the same effect for a glass &amp; window film site: an instant toggle, an animated crossfade, and a draggable before/after reveal. Same effect, three interaction feels — pick the one that fits the brand.</p>
 </div>
 
 <!-- DEMO 1: INSTANT TOGGLE -->
@@ -388,27 +390,17 @@ footer a:hover { color: #fff; }
           <button type="button" class="glass-panel panel-fade is-clear" id="panel-fade" aria-pressed="false" aria-label="Toggle glass panel between clear and opaque, animated crossfade" onclick="togglePanel('fade')">
             <span class="panel-state-tag" id="tag-fade" aria-hidden="true">Clear</span>
             <span class="panel-hint" aria-hidden="true">Click to switch</span>
-            <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-              <rect width="400" height="300" fill="#F3F6FA"/>
-              <rect x="0" y="210" width="400" height="90" fill="#E3EAF1"/>
-              <rect x="150" y="120" width="100" height="90" rx="3" fill="#378ADD" opacity="0.12"/>
-              <rect x="150" y="120" width="100" height="90" rx="3" fill="none" stroke="#185FA5" stroke-width="2"/>
-              <circle cx="180" cy="175" r="16" fill="none" stroke="#4A5568" stroke-width="2" opacity="0.5"/>
-              <circle cx="220" cy="175" r="16" fill="none" stroke="#4A5568" stroke-width="2" opacity="0.5"/>
-              <rect x="290" y="90" width="50" height="120" fill="#DCE7F0"/>
-              <rect x="40" y="150" width="70" height="60" rx="4" fill="#FAEEDA" opacity="0.8"/>
-              <rect x="0" y="0" width="400" height="300" fill="none" stroke="#185FA5" stroke-width="6"/>
-            </svg>
+            <img src="assets/demo-smart-glass-office.jpg" alt="">
             <div class="frost-layer">
               <div class="frost-noise"></div>
             </div>
           </button>
         </div>
         <div class="demo-copy">
-          <span class="demo-eyebrow">Interaction B</span>
+          <span class="demo-eyebrow">Interaction B — Todd's pick</span>
           <h3>Animated dissolve</h3>
           <p>Slightly slower, but visually satisfying — the transition itself becomes part of the brand moment rather than just a state change.</p>
-          <p class="demo-hint-text">Click the glass panel to toggle. Keyboard: Tab to it, then Enter or Space.</p>
+          <p class="demo-hint-text">Click the glass panel to toggle. Keyboard: Tab to it, then Enter or Space. Photo is a reference office shot — swap for the customer's own space once confirmed.</p>
         </div>
       </div>
     </div>
