@@ -157,6 +157,8 @@ section { padding: 56px 2rem; }
 }
 .glass-panel svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 .glass-panel img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.frost-pane { position: absolute; overflow: hidden; pointer-events: none; }
+.frost-pane .frost-layer { position: absolute; inset: 0; }
 .glass-panel img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
 .frost-layer {
   position: absolute;
@@ -391,8 +393,20 @@ footer a:hover { color: #fff; }
             <span class="panel-state-tag" id="tag-fade" aria-hidden="true">Clear</span>
             <span class="panel-hint" aria-hidden="true">Click to switch</span>
             <img src="assets/demo-smart-glass-office.jpg" alt="">
-            <div class="frost-layer">
-              <div class="frost-noise"></div>
+            <div class="frost-pane" style="left:2.33%; top:12.56%; width:19.92%; height:72.44%;">
+              <div class="frost-layer"><div class="frost-noise"></div></div>
+            </div>
+            <div class="frost-pane" style="left:22.25%; top:12.56%; width:18.42%; height:72.44%;">
+              <div class="frost-layer"><div class="frost-noise"></div></div>
+            </div>
+            <div class="frost-pane" style="left:40.67%; top:12.56%; width:18.5%; height:72.44%;">
+              <div class="frost-layer"><div class="frost-noise"></div></div>
+            </div>
+            <div class="frost-pane" style="left:59.17%; top:12.56%; width:19%; height:72.44%;">
+              <div class="frost-layer"><div class="frost-noise"></div></div>
+            </div>
+            <div class="frost-pane" style="left:78.17%; top:12.56%; width:18.5%; height:72.44%;">
+              <div class="frost-layer"><div class="frost-noise"></div></div>
             </div>
           </button>
         </div>
