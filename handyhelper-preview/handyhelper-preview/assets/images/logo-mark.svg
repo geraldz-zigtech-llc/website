@@ -1,0 +1,11 @@
+<svg viewBox="0 0 120 60" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Handy Helper Housekeeping house icon">
+  <g fill="none" stroke="#48511A" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M6 40 L30 14 L54 40"/>
+    <rect x="16" y="32" width="9" height="8" fill="#48511A" stroke="none"/>
+    <path d="M28 42 L58 8 L88 42"/>
+    <rect x="40" y="30" width="10" height="12" fill="none"/>
+    <path d="M66 42 L90 18 L114 42"/>
+    <rect x="80" y="32" width="9" height="8" fill="#48511A" stroke="none"/>
+    <path d="M2 44 Q60 30 118 44" stroke="#48511A" stroke-width="1.5" fill="none"/>
+  </g>
+</svg>
