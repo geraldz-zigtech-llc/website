@@ -1,0 +1,42 @@
+name: Update Google Reviews
+
+# Scheduled trigger ONLY — never runs on push/pull_request, to keep API
+# call volume predictable and low (see cost analysis in master-checklist.md).
+on:
+  schedule:
+    - cron: '0 13 * * 1'   # Every Monday at 13:00 UTC (~9am ET)
+  workflow_dispatch: {}     # Allows manual "Run workflow" trigger from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  update-reviews:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch latest reviews and update index.html
+        env:
+          PLACES_API_KEY: ${{ secrets.PLACES_API_KEY }}
+          GOOGLE_PLACE_ID: ${{ secrets.GOOGLE_PLACE_ID }}
+          REVIEWS_TARGET_FILE: handyhelper-preview/index.html
+        run: node scripts/update-reviews.js
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "zigtech-reviews-bot"
+          git config user.email "actions@github.com"
+          if git diff --quiet; then
+            echo "No changes to commit."
+          else
+            git add handyhelper-preview/index.html
+            git commit -m "Auto-update Google reviews"
+            git push
+          fi

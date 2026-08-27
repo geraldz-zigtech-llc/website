@@ -18,7 +18,7 @@
   --ink-soft: #3F3F3F;
   --border: #E8E1DC;
   --font-display: 'Playfair Display', Georgia, serif;
-  --font-script: 'Give You Glory', cursive;
+  --font-script: 'Alex Brush', cursive;
   --font-body: 'Jost', 'Segoe UI', Arial, sans-serif;
 }
 
@@ -412,6 +412,58 @@ section { padding: 64px 0; }
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
   margin: 32px 0;
+}
+
+/* Reviews (auto-updated by scripts/update-reviews.js via GitHub Action) */
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 32px;
+}
+.review-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+}
+.review-card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.review-avatar {
+  border-radius: 50%;
+  object-fit: cover;
+}
+.review-avatar-fallback {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: var(--pink);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700;
+}
+.review-author { font-weight: 700; font-size: 0.92rem; margin: 0; }
+.review-time { font-size: 0.8rem; color: var(--ink-soft); margin: 0; }
+.review-stars { color: #E8A33D; letter-spacing: 2px; margin: 0 0 8px; }
+.review-text {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.review-source-link { font-size: 0.82rem; font-weight: 600; color: var(--pink); text-decoration: none; }
+.review-source-link:hover { text-decoration: underline; }
+
+@media (max-width: 900px) {
+  .reviews-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .reviews-grid { grid-template-columns: 1fr; }
 }
 
 /* Footer */
