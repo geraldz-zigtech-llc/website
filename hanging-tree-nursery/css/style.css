@@ -212,7 +212,7 @@ summary:focus-visible {
   text-decoration: none;
   color: var(--ink);
 }
-.brand img { height: 52px; width: auto; }
+.brand img { height: 72px; width: auto; }
 .brand-text {
   font-family: var(--font-display);
   font-weight: 700;
@@ -322,6 +322,8 @@ summary:focus-visible {
   .main-nav li { border-bottom: 1px solid var(--kraft-line); }
   .main-nav a { display: block; padding: 0.9em 0.2em; }
   .header-phone span { display: none; }
+  .brand-text { display: none; }
+  .brand img { height: 52px; }
 }
 
 /* ---------- Hero ---------- */
@@ -337,6 +339,11 @@ summary:focus-visible {
   grid-template-columns: 1.05fr 1fr;
   gap: var(--space-5);
   align-items: center;
+}
+.hero-logo {
+  height: 110px;
+  width: auto;
+  margin-bottom: var(--space-3);
 }
 .hero-eyebrow {
   font-family: var(--font-tag);
