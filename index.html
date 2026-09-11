@@ -523,6 +523,50 @@ transition: background 0.2s, transform 0.15s;
 margin-top: 0.5rem;
 }
 .form-submit:hover { background: #145089; transform: translateY(-1px); }
+#schedule-consultation { background: var(--off-white); }
+.schedule-section-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+.schedule-widget-wrap {
+width: 100%;
+border-radius: 12px;
+overflow: hidden;
+border: 1px solid var(--border);
+box-shadow: 0 1px 4px rgba(24, 95, 165, 0.12);
+text-align: left;
+background: var(--white);
+}
+.schedule-widget-wrap iframe {
+display: block;
+width: 100%;
+min-height: 600px;
+border: 0;
+}
+.schedule-tagline {
+margin-top: 1.5rem;
+font-family: 'DM Serif Display', serif;
+font-style: italic;
+font-size: 18px;
+color: var(--blue-mid);
+}
+.zig-signoff {
+max-width: 320px;
+margin: 1.25rem auto 0;
+border-radius: 10px;
+overflow: hidden;
+border: 1px solid var(--border);
+}
+.zig-signoff video {
+display: block;
+width: 100%;
+height: auto;
+}
+.visually-hidden {
+position: absolute;
+width: 1px;
+height: 1px;
+overflow: hidden;
+clip: rect(0 0 0 0);
+white-space: nowrap;
+}
 footer {
 background: var(--slate);
 color: rgba(255,255,255,0.6);
@@ -556,6 +600,7 @@ section { padding: 64px 1.5rem; }
 .caps-grid { grid-template-columns: 1fr; }
 .cert-grid { grid-template-columns: 1fr; }
 footer { flex-direction: column; align-items: flex-start; }
+.schedule-widget-wrap iframe { min-height: 720px; }
 }
 </style>
 <link rel="icon" type="image/png" href="zigtech-favicon.png">
@@ -1101,6 +1146,38 @@ footer { flex-direction: column; align-items: flex-start; }
 <button type="submit" class="form-submit">Send inquiry</button>
 </form>
 </div>
+</div>
+</div>
+</section>
+
+<!-- SCHEDULE A CONSULTATION -->
+<section id="schedule-consultation">
+<div class="schedule-section-inner">
+<div class="section-label">Book time</div>
+<h2 class="section-heading">Customer first, everything else second.</h2>
+<p class="section-intro" style="margin-left:auto; margin-right:auto;">Have a question? Get a direct answer. Pick a time below.</p>
+<div class="schedule-widget-wrap">
+<iframe
+src="https://calendar.google.com/appointments/schedules/AcZssZ06iO2tW0ErWOtPzCFdSYN2mfQT9rLnUbiGCre8TVqRdLkExVeAWNdhZ0uPZpOOLEKsAGnSqhWb?gv=true"
+width="100%"
+height="600"
+frameborder="0"
+title="Schedule a consultation with ZigTech LLC"
+loading="lazy">
+</iframe>
+</div>
+<p class="schedule-tagline">When others Zag, we Zig.</p>
+<div class="zig-signoff">
+<video
+width="320"
+playsinline
+controls
+preload="metadata"
+poster="/assets/video/zig-signoff-poster.jpg"
+aria-label="Zig says: When others Zag, we Zig.">
+<source src="/assets/video/zig-signoff.mp4" type="video/mp4">
+</video>
+<p class="visually-hidden">Zig says: "When others Zag, we Zig."</p>
 </div>
 </div>
 </section>
