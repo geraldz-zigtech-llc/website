@@ -247,7 +247,7 @@ h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; col
 /* ---- GALLERY ---- */
 .cs-gallery { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
 .cs-gallery-card { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); background: var(--frost); }
-.cs-gallery-card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+.cs-gallery-card .cs-toggle-panel { aspect-ratio: 4 / 3; border: 0; border-radius: 0; box-shadow: none; }
 .cs-gallery-caption { padding: 0.9rem 1.1rem; }
 .cs-gallery-caption h3 { font-size: 13.5px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
 .cs-gallery-caption p { font-size: 12.5px; color: var(--ink-soft); font-weight: 300; }
@@ -444,31 +444,51 @@ h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; col
   <div class="cs-section-inner">
     <div class="cs-eyebrow">Real installations</div>
     <h2 class="cs-section-heading">See it switching</h2>
-    <p class="cs-section-intro">Actual ClearSwitch installs, shown as they switch between opaque and clear.</p>
+    <p class="cs-section-intro">Actual ClearSwitch installs. Click any photo to switch it between opaque and clear.</p>
     <div class="cs-gallery">
       <div class="cs-gallery-card">
-        <img src="assets/smart-glass/install-01.gif" alt="Glass conference room wall switching from frosted to clear, revealing a meeting room with chairs and a wall-mounted screen" loading="lazy">
+        <button type="button" class="cs-toggle-panel" aria-pressed="false" aria-label="Toggle the conference room glass wall between frosted and clear, real product photo">
+          <span class="cs-toggle-tag">Opaque</span>
+          <span class="cs-toggle-hint">Click to switch</span>
+          <img src="assets/smart-glass/install-01-clear.jpg" alt="" aria-hidden="true" loading="lazy">
+          <img src="assets/smart-glass/install-01-opaque.jpg" alt="" aria-hidden="true" class="cs-opaque-layer" loading="lazy">
+        </button>
         <div class="cs-gallery-caption">
           <h3>Conference room partition</h3>
           <p>Full-height glass wall, switches to frosted for meetings, clear when the room is open.</p>
         </div>
       </div>
       <div class="cs-gallery-card">
-        <img src="assets/smart-glass/install-02.gif" alt="Glass office partition switching from frosted to clear, revealing a conference table and chairs behind" loading="lazy">
+        <button type="button" class="cs-toggle-panel" aria-pressed="false" aria-label="Toggle the office glass partition between frosted and clear, real product photo">
+          <span class="cs-toggle-tag">Opaque</span>
+          <span class="cs-toggle-hint">Click to switch</span>
+          <img src="assets/smart-glass/install-02-clear.jpg" alt="" aria-hidden="true" loading="lazy">
+          <img src="assets/smart-glass/install-02-opaque.jpg" alt="" aria-hidden="true" class="cs-opaque-layer" loading="lazy">
+        </button>
         <div class="cs-gallery-caption">
           <h3>Office glass wall</h3>
           <p>Five-panel office divider, frosted by default for privacy, clears on demand.</p>
         </div>
       </div>
       <div class="cs-gallery-card">
-        <img src="assets/smart-glass/install-03.gif" alt="Angled storefront glazing switching from frosted to clear, showing the view outside" loading="lazy">
+        <button type="button" class="cs-toggle-panel" aria-pressed="false" aria-label="Toggle the angled storefront glazing between frosted and clear, real product photo">
+          <span class="cs-toggle-tag">Opaque</span>
+          <span class="cs-toggle-hint">Click to switch</span>
+          <img src="assets/smart-glass/install-03-clear.jpg" alt="" aria-hidden="true" loading="lazy">
+          <img src="assets/smart-glass/install-03-opaque.jpg" alt="" aria-hidden="true" class="cs-opaque-layer" loading="lazy">
+        </button>
         <div class="cs-gallery-caption">
           <h3>Storefront glazing</h3>
           <p>Angled glass frontage, used to control window visibility through the day.</p>
         </div>
       </div>
       <div class="cs-gallery-card">
-        <img src="assets/smart-glass/install-04.gif" alt="Sliding glass door panels switching from frosted to fully clear, revealing an outdoor patio area" loading="lazy">
+        <button type="button" class="cs-toggle-panel" aria-pressed="false" aria-label="Toggle the sliding glass door panels between frosted and clear, real product photo">
+          <span class="cs-toggle-tag">Opaque</span>
+          <span class="cs-toggle-hint">Click to switch</span>
+          <img src="assets/smart-glass/install-04-clear.jpg" alt="" aria-hidden="true" loading="lazy">
+          <img src="assets/smart-glass/install-04-opaque.jpg" alt="" aria-hidden="true" class="cs-opaque-layer" loading="lazy">
+        </button>
         <div class="cs-gallery-caption">
           <h3>Sliding glass doors, live install</h3>
           <p>Multi-panel sliding door system shown switching during on-site commissioning.</p>
@@ -623,12 +643,13 @@ h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; col
 <script>
 document.getElementById('cs-year').textContent = new Date().getFullYear();
 
-const heroToggle = document.getElementById('cs-hero-toggle');
-const heroTag = document.getElementById('cs-hero-tag');
-heroToggle.addEventListener('click', () => {
-  const isClear = heroToggle.classList.toggle('is-clear');
-  heroToggle.setAttribute('aria-pressed', String(isClear));
-  heroTag.textContent = isClear ? 'Clear' : 'Opaque';
+document.querySelectorAll('.cs-toggle-panel').forEach(panel => {
+  const tag = panel.querySelector('.cs-toggle-tag');
+  panel.addEventListener('click', () => {
+    const isClear = panel.classList.toggle('is-clear');
+    panel.setAttribute('aria-pressed', String(isClear));
+    if (tag) tag.textContent = isClear ? 'Clear' : 'Opaque';
+  });
 });
 // Demo preview only: forms do not submit.
 document.querySelectorAll('form[data-demo-form]').forEach(f => {
