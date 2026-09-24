@@ -366,9 +366,52 @@ h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; col
   .cs-hero { padding: 40px 1.25rem 24px; }
   .cs-section { padding: 56px 1.25rem; }
 }
+
+/* ===== DEMO ONLY: white-label explainer (not part of the dealer template) ===== */
+.wl-banner { background: var(--ink); color: #fff; font-size: 14px; padding: 10px 2rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 6px 14px; text-align: center; }
+.wl-banner strong { font-family: 'Space Grotesk', sans-serif; letter-spacing: 0.06em; text-transform: uppercase; font-size: 12px; background: #FFD84D; color: #1C2226; padding: 3px 10px; border-radius: 100px; }
+.wl-banner a { color: #fff; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.wl-section { padding: 72px 2rem; background: var(--frost-strong); border-top: 4px solid #FFD84D; border-bottom: 4px solid #FFD84D; scroll-margin-top: 68px; }
+.wl-grid { display: grid; grid-template-columns: 1.15fr 1fr; gap: 2.5rem; align-items: start; }
+.wl-items { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.wl-item { background: var(--white); border: 1px solid var(--border); border-radius: 12px; padding: 1.1rem 1.2rem; }
+.wl-item h3 { font-size: 15px; margin-bottom: 4px; }
+.wl-item p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.6; }
+.wl-try { background: var(--white); border: 2px solid var(--brand); border-radius: 14px; padding: 1.5rem; box-shadow: 0 12px 32px -14px rgba(20,40,55,0.3); }
+.wl-try h3 { font-size: 18px; margin-bottom: 4px; }
+.wl-try > p { font-size: 13.5px; color: var(--ink-soft); margin-bottom: 1.1rem; }
+.wl-try label, .wl-try legend { display: block; font-size: 13px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+.wl-try input[type=text] { width: 100%; font: inherit; font-size: 15px; padding: 10px 12px; border: 1px solid var(--border-strong); border-radius: 8px; margin-bottom: 1rem; }
+.wl-try fieldset { border: 0; margin-bottom: 1rem; }
+.wl-swatches { display: flex; flex-wrap: wrap; gap: 8px; position: relative; }
+.wl-swatches label { display: flex; align-items: center; gap: 8px; font-weight: 500; font-size: 13px; border: 1px solid var(--border-strong); border-radius: 100px; padding: 6px 12px 6px 6px; cursor: pointer; margin: 0; }
+.wl-swatches input { position: absolute; top: 0; left: 0; opacity: 0; width: 1px; height: 1px; margin: 0; pointer-events: none; }
+.wl-swatches input:checked + label { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+.wl-swatches input:focus-visible + label { outline: 2px solid var(--brand); outline-offset: 2px; }
+.wl-dot { width: 22px; height: 22px; border-radius: 50%; display: inline-block; }
+.wl-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.wl-reset { font: inherit; font-size: 13px; font-weight: 600; background: none; border: 1px solid var(--border-strong); border-radius: 8px; padding: 8px 14px; cursor: pointer; color: var(--ink); }
+.wl-status { font-size: 13px; color: var(--ink-soft); min-height: 1.2em; }
+.wl-note { font-size: 12.5px; color: var(--ink-soft); margin-top: 1rem; }
+.wl-contact { margin-top: 2rem; background: var(--ink); color: #fff; border-radius: 12px; padding: 1.2rem 1.5rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 20px; }
+.wl-contact p { font-size: 15px; }
+.wl-contact a { color: #fff; font-weight: 600; }
+.wl-float { position: fixed; left: 16px; bottom: 16px; z-index: 90; background: #FFD84D; color: #1C2226; font-weight: 700; font-size: 13px; padding: 10px 16px; border-radius: 100px; text-decoration: none; box-shadow: 0 8px 20px -8px rgba(0,0,0,0.4); }
+@media (max-width: 900px) {
+  .wl-grid { grid-template-columns: 1fr; }
+  .wl-section { padding: 48px 1.25rem; }
+}
+@media (max-width: 560px) { .wl-items { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
+
+<!-- ===== DEMO ONLY: white-label banner ===== -->
+<div class="wl-banner">
+  <strong>Sample dealer site</strong>
+  <span>Every name, color, and contact on this page can be replaced with yours.</span>
+  <a href="#white-label">See how to make it your own</a>
+</div>
 
 <!-- ===== NAV ===== -->
 <nav class="cs-nav">
@@ -412,6 +455,51 @@ h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; col
     </div>
   </div>
 </div>
+
+<!-- ===== DEMO ONLY: white-label explainer ===== -->
+<section id="white-label" class="wl-section" aria-labelledby="wl-heading">
+  <div class="cs-section-inner">
+    <div class="cs-eyebrow">For dealers</div>
+    <h2 class="cs-section-heading" id="wl-heading">Your brand on this site, not ours</h2>
+    <p class="cs-section-intro">Everything you see here is a template. As a dealer, you get this full site set up under your own product name, business name, colors, and domain. Customers see your brand only.</p>
+    <div class="wl-grid">
+      <div class="wl-items">
+        <div class="wl-item"><h3>Your product name</h3><p>Rename the product once and it updates everywhere: headings, page title, search listings, and forms.</p></div>
+        <div class="wl-item"><h3>Your business name</h3><p>Your company appears in the footer and on every page as the authorized dealer.</p></div>
+        <div class="wl-item"><h3>Your brand colors</h3><p>Buttons, headings, and accents all follow your colors.</p></div>
+        <div class="wl-item"><h3>Your leads, your inbox</h3><p>Quote requests and dealer applications go straight to your email.</p></div>
+        <div class="wl-item"><h3>Your domain</h3><p>Run it as its own website, or add it to the site you already have.</p></div>
+        <div class="wl-item"><h3>Real install photos</h3><p>Includes actual installation photos with the click-to-switch effect, ready to use.</p></div>
+      </div>
+      <div class="wl-try">
+        <h3>Try it now</h3>
+        <p>Type your names and pick a color. This page updates instantly.</p>
+        <label for="wl-product">Your product name</label>
+        <input type="text" id="wl-product" maxlength="40" placeholder="ClearSwitch" autocomplete="off">
+        <label for="wl-business">Your business name</label>
+        <input type="text" id="wl-business" maxlength="60" placeholder="Your Company Name, LLC" autocomplete="off">
+        <fieldset>
+          <legend>Your colors</legend>
+          <div class="wl-swatches">
+            <input type="radio" name="wl-theme" id="wl-t-blue" value="blue" checked><label for="wl-t-blue"><span class="wl-dot" style="background:#1B4B66"></span>Glass blue</label>
+            <input type="radio" name="wl-theme" id="wl-t-forest" value="forest"><label for="wl-t-forest"><span class="wl-dot" style="background:#1F5A3D"></span>Forest</label>
+            <input type="radio" name="wl-theme" id="wl-t-charcoal" value="charcoal"><label for="wl-t-charcoal"><span class="wl-dot" style="background:#2B2F33"></span>Charcoal</label>
+            <input type="radio" name="wl-theme" id="wl-t-navy" value="navy"><label for="wl-t-navy"><span class="wl-dot" style="background:#1E2A5A"></span>Navy</label>
+          </div>
+        </fieldset>
+        <div class="wl-actions">
+          <button type="button" class="wl-reset" id="wl-reset">Reset</button>
+          <span class="wl-status" id="wl-status" role="status" aria-live="polite"></span>
+        </div>
+        <p class="wl-note">Preview only. Nothing is saved, and the page returns to normal when you reload.</p>
+      </div>
+    </div>
+    <div class="wl-contact">
+      <p>Want this site for your business?</p>
+      <p><a href="mailto:geraldz@zigtech-llc.com">geraldz@zigtech-llc.com</a> &middot; <a href="tel:+12529554424">(252) 955-4424</a></p>
+    </div>
+  </div>
+</section>
 
 <!-- ===== HOW IT WORKS ===== -->
 <section id="how" class="cs-section">
@@ -634,6 +722,8 @@ h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; col
 </section>
 </main>
 
+<a href="#white-label" class="wl-float">Make it yours</a>
+
 <footer class="cs-footer">
   <!-- DEALER: replace with your business name -->
   <div class="cs-footer-left">&copy; <span id="cs-year"></span> Your Company Name, LLC &middot; ClearSwitch authorized dealer</div>
@@ -662,6 +752,56 @@ document.querySelectorAll('form[data-demo-form]').forEach(f => {
     note.textContent = 'Demo preview: submissions are disabled on this page.';
   });
 });
+// DEMO ONLY: white-label live preview.
+(function () {
+  const ORIG_PRODUCT = 'ClearSwitch', ORIG_BUSINESS = 'Your Company Name, LLC';
+  const themes = {
+    blue:     ['#1B4B66', '#123549', '#B8874A', '#7D5A2C'],
+    forest:   ['#1F5A3D', '#153F2B', '#A8923F', '#6B5C1F'],
+    charcoal: ['#2B2F33', '#1A1D20', '#C0392B', '#A12D22'],
+    navy:     ['#1E2A5A', '#141C3D', '#C9A227', '#7A6212']
+  };
+  function wrap(word, key) {
+    const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode: n => (n.parentElement.closest('script,style,.wl-try') || !n.nodeValue.includes(word)) ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT
+    });
+    const nodes = []; while (walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(n => {
+      const frag = document.createDocumentFragment();
+      n.nodeValue.split(word).forEach((part, i) => {
+        if (i) { const sp = document.createElement('span'); sp.dataset.wl = key; sp.textContent = word; frag.appendChild(sp); }
+        if (part) frag.appendChild(document.createTextNode(part));
+      });
+      n.replaceWith(frag);
+    });
+  }
+  wrap(ORIG_BUSINESS, 'business');
+  wrap(ORIG_PRODUCT, 'product');
+  const baseTitle = document.title;
+  const pIn = document.getElementById('wl-product'), bIn = document.getElementById('wl-business');
+  const status = document.getElementById('wl-status');
+  let timer;
+  function say(msg) { clearTimeout(timer); timer = setTimeout(() => { status.textContent = msg; }, 400); }
+  function setText(key, val) { document.querySelectorAll('[data-wl="' + key + '"]').forEach(el => { el.textContent = val; }); }
+  pIn.addEventListener('input', () => {
+    const v = pIn.value.trim() || ORIG_PRODUCT;
+    setText('product', v); document.title = baseTitle.split(ORIG_PRODUCT).join(v); say('Product name updated across the page.');
+  });
+  bIn.addEventListener('input', () => { setText('business', bIn.value.trim() || ORIG_BUSINESS); say('Business name updated in the footer.'); });
+  function applyTheme(t) {
+    const [b, bd, a, ad] = themes[t], r = document.documentElement.style;
+    r.setProperty('--brand', b); r.setProperty('--brand-dark', bd); r.setProperty('--accent', a); r.setProperty('--accent-dark', ad);
+  }
+  document.querySelectorAll('input[name="wl-theme"]').forEach(r => r.addEventListener('change', () => { applyTheme(r.value); say('Colors updated across the page.'); }));
+  document.getElementById('wl-reset').addEventListener('click', () => {
+    pIn.value = ''; bIn.value = ''; setText('product', ORIG_PRODUCT); setText('business', ORIG_BUSINESS);
+    document.title = baseTitle; document.getElementById('wl-t-blue').checked = true; applyTheme('blue'); say('Page reset to the sample.');
+  });
+  const pill = document.querySelector('.wl-float');
+  if (pill && 'IntersectionObserver' in window) {
+    new IntersectionObserver(es => { pill.style.display = es[0].isIntersecting ? 'none' : ''; }).observe(document.getElementById('white-label'));
+  }
+})();
 </script>
 
 </body>
