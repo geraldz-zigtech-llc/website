@@ -16,11 +16,11 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Contact Us | networks | etc">
   <meta name="twitter:description" content="Get a quote or reach the networks | etc team in Altamonte Springs, FL. We typically respond the same business day.">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="assets/css/main.css">
   <!-- TODO: replace G-XXXXXXXXXX with Brian's real GA4 Measurement ID before launch -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
@@ -45,7 +45,7 @@
         </ul>
       </nav>
       <div class="header-right">
-        <a class="header-phone" href="tel:+14074270052">407-427-0052</a>
+        <a class="header-phone" href="tel:+14074761310">407-476-1310</a>
         <a class="btn btn-primary" href="contact.html">Get a Quote</a>
         <button class="nav-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
           <span></span>
@@ -59,7 +59,7 @@
             <li><a href="services.html">Services</a></li>
             <li><a href="support.html">Support</a></li>
             <li><a href="contact.html" aria-current="page">Contact</a></li>
-        <li><a href="tel:+14074270052">407-427-0052</a></li>
+        <li><a href="tel:+14074761310">407-476-1310</a></li>
       </ul>
     </nav>
   </header>
@@ -75,21 +75,19 @@
 
     <section>
       <div class="container">
-        <div style="display:grid; grid-template-columns: 1fr 1.3fr; gap: var(--space-5);">
+        <div style="display:grid; grid-template-columns: 1fr 1.3fr; gap: var(--space-6);">
           <div>
             <h2 style="font-size:1.3rem;">Get in touch</h2>
             <p style="font-family:var(--font-mono); font-size:0.95rem; color:var(--ink);">
               networks | etc<br>
-              <!-- TODO CONFIRM ADDRESS WITH BRIAN — carried over from prior site, may be outdated -->
               540 North State Road 434, Unit 123<br>
               Altamonte Springs, FL 32714
             </p>
             <p style="margin-top:1.5em;">
-              <a href="tel:+14074270052" style="font-weight:700; font-size:1.1rem;">407-427-0052</a>
+              <a href="tel:+14074761310" style="font-weight:700; font-size:1.1rem;">407-476-1310</a>
             </p>
-            <p class="form-hint" style="margin-top:2em;">Preferred method of contact, email or phone &mdash; your choice, just let us know below.</p>
           </div>
-          <form action="https://formsubmit.co/REPLACE_WITH_CLIENT_EMAIL" method="POST">
+          <form action="https://formsubmit.co/REPLACE_WITH_CLIENT_EMAIL" method="POST" style="padding-right: var(--space-2);">
             <input type="hidden" name="_subject" value="New inquiry from netc247.com">
             <input type="hidden" name="_next" value="https://www.netc247.com/thank-you.html">
             <input type="hidden" name="_autoresponse" value="Thanks for reaching out to networks | etc. We received your message and will get back to you shortly, usually the same business day.">
@@ -141,15 +139,15 @@
       <div class="footer-grid">
         <div>
           <div class="footer-logo">networks<span class="pipe">&nbsp;|&nbsp;</span>etc</div>
-          <p style="margin-top:1em; max-width: 32ch;">Managed IT, network, cloud and security services for Central Florida businesses.</p>
+          <p style="margin-top:1em; max-width: 32ch;">Managed IT, network, integration and security services for Central Florida businesses.</p>
         </div>
         <div>
           <h3 class="footer-heading">Services</h3>
           <ul>
-            <li><a href="services.html#managed-it">Managed IT</a></li>
-            <li><a href="services.html#network">Network Services</a></li>
-            <li><a href="services.html#cloud">Cloud Solutions</a></li>
-            <li><a href="services.html#security">Security &amp; Low Voltage</a></li>
+            <li><a href="services.html#it-services">Managed IT</a></li>
+            <li><a href="services.html#infrastructure">Infrastructure</a></li>
+            <li><a href="services.html#infrastructure">Low Voltage | Wireless</a></li>
+            <li><a href="services.html#physical-security">Security Integration</a></li>
           </ul>
         </div>
         <div>
@@ -163,24 +161,24 @@
           <h3 class="footer-heading">Support</h3>
           <ul>
             <li><a href="support.html">Remote Assistance</a></li>
-            <li><a href="tel:+14074270052">407-427-0052</a></li>
+            <li><a href="tel:+14074761310">407-476-1310</a></li>
           </ul>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>&copy; 2026 networks | etc. All rights reserved.</span>
+        <span>&copy; 2026 networks | etc. All rights reserved. Certified Electrical Contractor License # EC13016153</span>
         <span>Orlando, FL</span>
       </div>
     </div>
   </footer>
-  <script src="main.js"></script>
+  <script src="assets/js/main.js"></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": "networks | etc",
   "url": "https://netc247.com/",
-  "telephone": "+1-407-427-0052",
+  "telephone": "+1-407-476-1310",
   "areaServed": "Central Florida",
   "address": {
     "@type": "PostalAddress",
@@ -190,11 +188,11 @@
     "postalCode": "32714",
     "addressCountry": "US"
   },
-  "description": "Managed IT, network, cloud, and security & low voltage services for Central Florida small businesses.",
-  "knowsAbout": ["Managed IT Services", "Network Design and Installation", "Cloud Computing", "Data Backup", "Security Surveillance", "Structured Cabling", "Access Control"]
+  "description": "Managed IT, physical security, and infrastructure/low voltage services for Central Florida small businesses.",
+  "knowsAbout": ["Managed IT Services", "Network Design and Installation", "Physical Security", "Security Surveillance", "Access Control", "Structured Cabling", "Low Voltage Infrastructure"]
 }
 </script>
-<!-- TODO CONFIRM: address and phone carried over from prior site / provided contact info — verify both with Brian before launch. NAICS/UEI/CAGE/founder omitted pending client confirmation per compliance policy (never guess registration details). -->
+<!-- Address confirmed correct by Brian 2026-09-22 (unmarked on annotated contact-page review). License # EC13016153 confirmed by Brian 2026-09-22 email. -->
 
 </body>
 </html>

@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  // Close mobile menu on nav link click (single-page navigation)
   menu.querySelectorAll("a").forEach(function (a) {
     a.addEventListener("click", function () {
       toggle.setAttribute("aria-expanded", "false");
