@@ -132,12 +132,12 @@ p { margin: 0 0 var(--space-2); }
 .logo {
   font-family: var(--font-display);
   font-size: 1.4rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--ink);
   text-decoration: none;
   display: flex;
   align-items: baseline;
-  gap: 0.5em;
+  gap: 0.2em;
 }
 .logo:hover { text-decoration: none; }
 .logo .pipe { color: var(--red); font-weight: 400; }
@@ -442,7 +442,7 @@ section { padding: var(--space-6) 0; }
 .footer-logo {
   font-family: var(--font-display);
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--white);
 }
 .footer-logo .pipe { color: var(--red); font-weight: 400; }
