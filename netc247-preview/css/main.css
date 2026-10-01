@@ -476,7 +476,15 @@ section { padding: var(--space-6) 0; }
   .pillars { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
+.about-intro-grid {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: var(--space-5);
+  align-items: center;
+}
 @media (max-width: 640px) {
+  .about-intro-grid { grid-template-columns: 1fr; }
+  .about-intro-grid img { max-width: 160px; margin: 0 auto; }
   .main-nav { display: none; }
   .nav-toggle { display: inline-flex; flex-direction: column; justify-content: center; }
   .header-phone { display: none; }
