@@ -1,4 +1,4 @@
-/* ============================================
+﻿/* ============================================
    networks | etc — Design System (v2)
    ============================================ */
 
@@ -16,7 +16,7 @@
   --green: #1BA672;
 
   /* Type */
-  --font-display: "Space Grotesk", "Arial Narrow", Arial, sans-serif;
+  --font-display: "Manrope", "Arial Narrow", Arial, sans-serif;
   --font-body: "Inter", -apple-system, "Segoe UI", Arial, sans-serif;
   --font-mono: "IBM Plex Mono", "Courier New", monospace;
 
