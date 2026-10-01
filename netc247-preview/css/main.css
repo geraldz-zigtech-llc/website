@@ -248,7 +248,7 @@ p { margin: 0 0 var(--space-2); }
   gap: var(--space-5);
   align-items: center;
 }
-.hero h1 { color: var(--white); }
+.hero h1 { color: var(--white); font-size: clamp(1.9rem, 3.4vw, 2.75rem); }
 .hero-sub {
   font-size: 1.15rem;
   color: #C9C9CC;
