@@ -16,7 +16,7 @@
   --green: #1BA672;
 
   /* Type */
-  --font-display: "Manrope", "Arial Narrow", Arial, sans-serif;
+  --font-display: "Roboto", "Arial Narrow", Arial, sans-serif;
   --font-body: "Inter", -apple-system, "Segoe UI", Arial, sans-serif;
   --font-mono: "IBM Plex Mono", "Courier New", monospace;
 
@@ -340,10 +340,12 @@ section { padding: var(--space-6) 0; }
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: var(--space-2);
+  margin-bottom: 0;
+  flex-shrink: 0;
 }
 .pillar-icon svg { width: 22px; height: 22px; stroke: var(--white); }
-.pillar-card h3 { margin-bottom: 0.4em; font-size: 1.05rem; }
+.pillar-head { display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-2); }
+.pillar-card h3 { margin-bottom: 0; font-size: 1.05rem; }
 .pillar-card ul {
   margin: 0.6em 0 0;
   padding-left: 1.1em;
