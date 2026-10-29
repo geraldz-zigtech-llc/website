@@ -95,8 +95,8 @@ border-radius: 6px;
 text-decoration: none;
 transition: background 0.2s, transform 0.15s !important;
 }
-.nav-cta:hover { background: #1450890 !important; transform: translateY(-1px); }
-.nav-mobile-toggle { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+.nav-cta:hover { background: #145089 !important; transform: translateY(-1px); }
+.nav-mobile-toggle { display: none; cursor: pointer; flex-direction: column; gap: 5px; background: none; border: none; padding: 8px; }
 .nav-mobile-toggle span { width: 22px; height: 2px; background: var(--slate); border-radius: 2px; transition: 0.3s; }
 .hero {
 padding: 96px 2rem 80px;
@@ -203,7 +203,7 @@ margin-bottom: 0.6rem;
 }
 .label-federal { color: var(--blue); }
 .label-commercial { color: var(--green-text); }
-.audience-card h3 {
+.audience-card h2 {
 font-size: 17px;
 font-weight: 500;
 color: var(--slate);
@@ -309,7 +309,7 @@ letter-spacing: 0.1em;
 color: var(--slate-light);
 margin-bottom: 0.35rem;
 }
-.who-card h4 {
+.who-card h3 {
 font-size: 14px;
 font-weight: 500;
 color: var(--slate);
@@ -374,7 +374,7 @@ margin-bottom: 0.5rem;
 .cert-card.sdvosb .cert-type-label { color: var(--blue); }
 .cert-card.vosb .cert-type-label { color: #3B6D11; }
 .cert-card.hub .cert-type-label { color: #854F0B; }
-.cert-card.sam .cert-type-label { color: #888780; }
+.cert-card.sam .cert-type-label { color: #5F5E5A; }
 .cert-card h3 {
 font-size: 14.5px;
 font-weight: 500;
@@ -383,7 +383,7 @@ margin-bottom: 0.4rem;
 line-height: 1.4;
 }
 .cert-card p { font-size: 12.5px; color: var(--slate-light); font-weight: 300; line-height: 1.6; }
-.cert-date { font-size: 11px; color: #888; margin-top: 0.6rem; }
+.cert-date { font-size: 11px; color: #5F5E5A; margin-top: 0.6rem; }
 .naics-box {
 background: var(--white);
 border: 1px solid var(--border);
@@ -507,6 +507,7 @@ transition: border-color 0.2s;
 .form-field input:focus,
 .form-field select:focus,
 .form-field textarea:focus { border-color: var(--blue); }
+a:focus-visible, button:focus-visible, .form-field input:focus-visible, .form-field select:focus-visible, .form-field textarea:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
 .form-field textarea { height: 100px; resize: vertical; }
 .form-submit {
 width: 100%;
@@ -545,7 +546,7 @@ margin-top: 1.5rem;
 font-family: 'DM Serif Display', serif;
 font-style: italic;
 font-size: 18px;
-color: var(--blue-mid);
+color: var(--blue);
 }
 .zig-signoff {
 max-width: 320px;
@@ -604,6 +605,17 @@ footer { flex-direction: column; align-items: flex-start; }
 }
 </style>
 <link rel="icon" type="image/png" href="zigtech-favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://zigtech-llc.com/">
+<meta property="og:site_name" content="ZigTech, LLC">
+<meta property="og:title" content="ZigTech, LLC | SDVOSB VAR/MSP/MSSP in Cocoa, FL">
+<meta property="og:description" content="SBA-certified SDVOSB, VOSB, and HUBZone IT firm specializing in network observability, cybersecurity, infrastructure, managed services, and website modernization for federal and commercial clients.">
+<meta property="og:image" content="https://zigtech-llc.com/ZigTech_llc_logo_nav.png">
+<meta property="og:image:alt" content="ZigTech, LLC logo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ZigTech, LLC | SDVOSB VAR/MSP/MSSP in Cocoa, FL">
+<meta name="twitter:description" content="SBA-certified SDVOSB, VOSB, and HUBZone IT firm specializing in network observability, cybersecurity, infrastructure, managed services, and website modernization for federal and commercial clients.">
+<meta name="twitter:image" content="https://zigtech-llc.com/ZigTech_llc_logo_nav.png">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -683,14 +695,14 @@ footer { flex-direction: column; align-items: flex-start; }
     "@type": "PostalAddress",
     "addressLocality": "Cocoa",
     "addressRegion": "FL",
-    "postalCode": "32922",
+    "postalCode": "32926",
     "addressCountry": "US"
   },
   "founder": {
     "@type": "Person",
     "name": "Gerald Ziegler",
-    "jobTitle": "Founder & Principal",
-    "description": "U.S. Navy submarine veteran with over two decades of enterprise network engineering experience."
+    "jobTitle": "Owner and Principal Consultant",
+    "description": "U.S. Navy submarine veteran with 27 years of enterprise network engineering experience."
   },
   "areaServed": {
     "@type": "Country",
@@ -730,7 +742,8 @@ footer { flex-direction: column; align-items: flex-start; }
 </head>
 <body>
 <!-- NAV -->
-<nav>
+<header>
+<nav aria-label="Main">
 <div class="nav-logo">
 <img src="https://raw.githubusercontent.com/geraldz-zigtech-llc/website/main/ZigTech_llc_logo_nav.png" alt="ZigTech LLC">
 </div>
@@ -746,21 +759,23 @@ footer { flex-direction: column; align-items: flex-start; }
 <li><a href="msp-assessment.html">Managed IT Assessment</a></li>
 <li><a href="#contact" class="nav-cta">Contact us</a></li>
 </ul>
-<div class="nav-mobile-toggle" id="nav-toggle" onclick="document.getElementById('nav-links').classList.toggle('open')">
+<button type="button" class="nav-mobile-toggle" id="nav-toggle" aria-label="Open menu" aria-controls="nav-links" aria-expanded="false">
 <span></span><span></span><span></span>
-</div>
+</button>
 </nav>
+</header>
 
+<main id="main">
 <!-- HERO -->
 <div class="hero">
 <div class="cert-strip">
-<span class="cert-badge badge-sdvosb">SDVOSB — SBA Certified</span>
-<span class="cert-badge badge-vosb">VOSB — SBA Certified</span>
-<span class="cert-badge badge-hub">HUBZone — SBA Certified</span>
+<span class="cert-badge badge-sdvosb">SDVOSB: SBA Certified</span>
+<span class="cert-badge badge-vosb">VOSB: SBA Certified</span>
+<span class="cert-badge badge-hub">HUBZone: SBA Certified</span>
 <span class="cert-badge badge-sam">SAM.gov Registered</span>
 </div>
-<h1 class="hero-headline">Enterprise network expertise —<br>for <em>government and commercial</em> clients</h1>
-<p class="hero-sub">ZigTech delivers network observability, cybersecurity, IT infrastructure, and managed services to federal agencies, prime contractors, and commercial enterprises. Veteran-led. 20+ years of hands-on experience. Triple set-aside eligible.</p>
+<h1 class="hero-headline">Enterprise network expertise<br>for <em>government and commercial</em> clients</h1>
+<p class="hero-sub">ZigTech delivers network observability, cybersecurity, IT infrastructure, and managed services to federal agencies, prime contractors, and commercial enterprises. Veteran-led. 27 years of hands-on experience. Triple set-aside eligible.</p>
 <div class="hero-actions">
 <a href="#contact" class="btn-primary">Request a capability briefing</a>
 <a href="ZigTech_Capabilities_Statement.pdf" class="btn-secondary">Download capabilities statement ↓</a>
@@ -771,13 +786,13 @@ footer { flex-direction: column; align-items: flex-start; }
 <div class="audience-strip">
 <div class="audience-card reveal">
 <div class="audience-label label-federal">Federal &amp; Government</div>
-<h3>SDVOSB, VOSB &amp; HUBZone set-aside eligible</h3>
+<h2>SDVOSB, VOSB &amp; HUBZone set-aside eligible</h2>
 <p>Contracting officers and prime contractors can leverage ZigTech's triple SBA certification for SDVOSB, HUBZone, and small business set-aside vehicles. We support direct awards, subcontracting, and teaming arrangements.</p>
 </div>
 <div class="audience-card reveal">
 <div class="audience-label label-commercial">Commercial &amp; Enterprise</div>
-<h3>Senior-level expertise without the enterprise overhead</h3>
-<p>Mid-market and enterprise organizations gain access to Cisco-trained network engineering depth — for observability deployments, network modernization, managed services, and cybersecurity program support.</p>
+<h2>Senior-level expertise without the enterprise overhead</h2>
+<p>Mid-market and enterprise organizations gain access to Cisco-trained network engineering depth for observability deployments, network modernization, managed services, and cybersecurity program support.</p>
 </div>
 </div>
 
@@ -786,7 +801,7 @@ footer { flex-direction: column; align-items: flex-start; }
 <div class="section-inner">
 <div class="section-label">Core capabilities</div>
 <h2 class="section-heading">What we deliver</h2>
-<p class="section-intro">ZigTech's services span network operations, security, IT infrastructure, and digital modernization — applicable to federal program offices, defense contractors, healthcare networks, financial services, and commercial enterprise IT teams and small businesses alike.</p>
+<p class="section-intro">ZigTech's services span network operations, security, IT infrastructure, and digital modernization, applicable to federal program offices, defense contractors, healthcare networks, financial services, and commercial enterprise IT teams and small businesses alike.</p>
 <div class="caps-grid reveal">
 
 <div class="cap-card">
@@ -821,7 +836,7 @@ footer { flex-direction: column; align-items: flex-start; }
 
 <div class="cap-card">
 <h3>Managed IT services &amp; NOC support</h3>
-<p>Ongoing managed network operations, help desk support, patching and monitoring, vendor coordination, and SNMP/NetFlow platform management — a single point of accountability so your team isn't juggling vendors.</p>
+<p>Ongoing managed network operations, help desk support, patching and monitoring, vendor coordination, and SNMP/NetFlow platform management: a single point of accountability so your team isn't juggling vendors.</p>
 <div class="cap-tags">
 <span class="tag tag-com">Commercial</span>
 </div>
@@ -830,7 +845,7 @@ footer { flex-direction: column; align-items: flex-start; }
 
 <div class="cap-card">
 <h3>Website creation, migration &amp; subscription optimization</h3>
-<p>New website builds and migrations off legacy platforms, plus an audit of your current paid tools — hosting, forms, analytics, and other recurring subscriptions — to find free or lower-cost alternatives without losing functionality.</p>
+<p>New website builds and migrations off legacy platforms, plus an audit of your current paid tools (hosting, forms, analytics, and other recurring subscriptions) to find free or lower-cost alternatives without losing functionality.</p>
 <div class="cap-tags">
 <span class="tag tag-com">Commercial</span>
 <span class="tag tag-naics">NAICS 541511</span>
@@ -848,15 +863,15 @@ footer { flex-direction: column; align-items: flex-start; }
 <div class="section-inner">
 <div class="section-label">Who we serve</div>
 <h2 class="section-heading">Our clients</h2>
-<p class="section-intro">ZigTech serves organizations where network reliability, security, and performance are mission-critical — from federal agencies to commercial enterprises and growing small businesses.</p>
+<p class="section-intro">ZigTech serves organizations where network reliability, security, and performance are mission-critical, from federal agencies to commercial enterprises and growing small businesses.</p>
 <div class="who-grid">
-<div class="who-card reveal"><div class="who-type">Federal</div><h4>Civilian &amp; defense agencies</h4></div>
-<div class="who-card reveal"><div class="who-type">Federal</div><h4>VA &amp; DoD programs</h4></div>
-<div class="who-card reveal"><div class="who-type">Federal</div><h4>Prime contractors &amp; systems integrators</h4></div>
-<div class="who-card reveal"><div class="who-type">Commercial</div><h4>Healthcare &amp; hospital networks</h4></div>
-<div class="who-card reveal"><div class="who-type">Commercial</div><h4>Financial services &amp; fintech</h4></div>
-<div class="who-card reveal"><div class="who-type">Commercial</div><h4>Mid-market enterprise IT</h4></div>
-<div class="who-card reveal"><div class="who-type">Commercial</div><h4>Small businesses modernizing their web presence</h4></div>
+<div class="who-card reveal"><div class="who-type">Federal</div><h3>Civilian &amp; defense agencies</h3></div>
+<div class="who-card reveal"><div class="who-type">Federal</div><h3>VA &amp; DoD programs</h3></div>
+<div class="who-card reveal"><div class="who-type">Federal</div><h3>Prime contractors &amp; systems integrators</h3></div>
+<div class="who-card reveal"><div class="who-type">Commercial</div><h3>Healthcare &amp; hospital networks</h3></div>
+<div class="who-card reveal"><div class="who-type">Commercial</div><h3>Financial services &amp; fintech</h3></div>
+<div class="who-card reveal"><div class="who-type">Commercial</div><h3>Mid-market enterprise IT</h3></div>
+<div class="who-card reveal"><div class="who-type">Commercial</div><h3>Small businesses modernizing their web presence</h3></div>
 </div>
 </div>
 </section>
@@ -870,7 +885,7 @@ footer { flex-direction: column; align-items: flex-start; }
 <div class="stat-col reveal">
 <img src="gerald-headshot.jpg" alt="Gerald Ziegler, Founder of ZigTech, LLC" style="width:100%; border-radius:12px; margin-bottom:12px; display:block;">
 <div class="stat-card">
-<div class="stat-num">20+</div>
+<div class="stat-num">27</div>
 <div class="stat-label">Years in network infrastructure</div>
 </div>
 <div class="stat-card">
@@ -883,8 +898,8 @@ footer { flex-direction: column; align-items: flex-start; }
 </div>
 </div>
 <div class="about-text reveal">
-<p>ZigTech was founded by a U.S. Navy submarine veteran with over two decades of enterprise network engineering experience across both federal and commercial sectors. Our principal brings deep technical expertise from senior roles at Cisco and multiple network technology companies serving global enterprise and government clients.</p>
-<p>We specialize in network observability, AIOps, and IT infrastructure — a high-demand capability set for both federal agencies managing large, multi-cloud network environments and commercial enterprises undergoing digital transformation. We also help small businesses modernize their web presence and cut unnecessary recurring software costs.</p>
+<p>ZigTech was founded by a U.S. Navy submarine veteran with 27 years of enterprise network engineering experience across both federal and commercial sectors. Our principal brings deep technical expertise from senior roles at Cisco and multiple network technology companies serving global enterprise and government clients.</p>
+<p>We specialize in network observability, AIOps, and IT infrastructure, a high-demand capability set for both federal agencies managing large, multi-cloud network environments and commercial enterprises undergoing digital transformation. We also help small businesses modernize their web presence and cut unnecessary recurring software costs.</p>
 <p>Based in Cocoa, Florida, ZigTech is an SBA-certified HUBZone, SDVOSB, and VOSB firm committed to delivering mission-quality outcomes with the discipline and accountability that comes from military service.</p>
 </div>
 </div>
@@ -896,7 +911,7 @@ footer { flex-direction: column; align-items: flex-start; }
 <div class="section-inner">
 <div class="section-label">Certifications &amp; set-asides</div>
 <h2 class="section-heading">Federal contracting credentials</h2>
-<p class="section-intro">ZigTech holds triple SBA set-aside eligibility — giving contracting officers and prime contractors maximum flexibility for small business utilization goals.</p>
+<p class="section-intro">ZigTech holds triple SBA set-aside eligibility, giving contracting officers and prime contractors maximum flexibility for small business utilization goals.</p>
 <div class="cert-grid">
 <div class="cert-card sdvosb reveal">
 <div class="cert-type-label">SDVOSB</div>
@@ -919,7 +934,7 @@ footer { flex-direction: column; align-items: flex-start; }
 <div class="cert-card sam reveal">
 <div class="cert-type-label">SAM.gov</div>
 <h3>System for Award Management</h3>
-<p>Active SAM.gov registration. All three SBA certifications reflected in profile. Cocoa, FL 32922.</p>
+<p>Active SAM.gov registration. All three SBA certifications reflected in profile. Cocoa, FL 32926.</p>
 <div class="cert-date">Active registration · UEI: W3AMXKRXLFE1 · CAGE: 18AP2</div>
 </div>
 </div>
@@ -960,8 +975,8 @@ footer { flex-direction: column; align-items: flex-start; }
 
 <a href="https://www.delltechnologies.com/partner/en-us/partner/partner.htm" target="_blank" rel="noopener noreferrer" class="partner-card reveal">
 <img class="partner-logo" src="assets/dell.png" alt="Dell Technologies">
-<span class="partner-name">Dell Technologies Federal</span>
-<span class="partner-type">Authorized Partner</span>
+<span class="partner-name">Dell Technologies</span>
+<span class="partner-type">Federal Authorized Partner</span>
 </a>
 
 <a href="https://www.fortinet.com/partners" target="_blank" rel="noopener noreferrer" class="partner-card reveal">
@@ -973,7 +988,7 @@ footer { flex-direction: column; align-items: flex-start; }
 <a href="https://www.hpe.com/us/en/partners.html" target="_blank" rel="noopener noreferrer" class="partner-card reveal">
 <img class="partner-logo" src="assets/hpe.webp" alt="HPE">
 <span class="partner-name">HPE</span>
-<span class="partner-type">Partner</span>
+<span class="partner-type">Federal Authorized Partner</span>
 </a>
 
 <a href="https://partner.hp.com" target="_blank" rel="noopener noreferrer" class="partner-card reveal">
@@ -1017,6 +1032,12 @@ footer { flex-direction: column; align-items: flex-start; }
 <span class="partner-name">Splunk</span>
 <span class="partner-type">A Cisco Company &bull; Partner</span>
 </a>
+
+<a href="https://partner.ui.com" target="_blank" rel="noopener noreferrer" class="partner-card reveal">
+<img class="partner-logo" src="assets/ubiquiti.svg" alt="Ubiquiti">
+<span class="partner-name">Ubiquiti</span>
+<span class="partner-type">UniFi Partner</span>
+</a>
 </div>
 
 <div class="section-label" style="margin-top:3rem;margin-bottom:1rem;">Distributors &amp; Suppliers</div>
@@ -1037,12 +1058,6 @@ footer { flex-direction: column; align-items: flex-start; }
 <img class="partner-logo" src="assets/pax8.png" alt="PAX8">
 <span class="partner-name">PAX8</span>
 <span class="partner-type">Cloud Distributor</span>
-</a>
-
-<a href="https://www.tdsynnex.com" target="_blank" rel="noopener noreferrer" class="partner-card reveal">
-<img class="partner-logo" src="assets/tdsynnex.svg" alt="TD SYNNEX">
-<span class="partner-name">TD SYNNEX</span>
-<span class="partner-type">IT Distributor &bull; DAP Member</span>
 </a>
 </div>
 </div>
@@ -1099,9 +1114,9 @@ footer { flex-direction: column; align-items: flex-start; }
 <h2 class="section-heading">Contact ZigTech</h2>
 <div class="contact-grid">
 <div class="reveal">
-<p>Whether you're a contracting officer evaluating set-aside options, a prime looking for a teaming partner, or a business exploring network services, managed IT, or a website refresh — we'd like to hear from you. We respond within one business day.</p>
+<p>Whether you're a contracting officer evaluating set-aside options, a prime looking for a teaming partner, or a business exploring network services, managed IT, or a website refresh, we'd like to hear from you. We respond within one business day.</p>
 <div class="contact-details">
-<div class="contact-item"><strong>Location</strong><span>Cocoa, FL 32922 (HUBZone)</span></div>
+<div class="contact-item"><strong>Location</strong><span>Cocoa, FL 32926 (HUBZone)</span></div>
 <div class="contact-item"><strong>SAM.gov UEI</strong><span>W3AMXKRXLFE1</span></div>
 <div class="contact-item"><strong>CAGE Code</strong><span>18AP2</span></div>
 <div class="contact-item"><strong>Email</strong><span>info@zigtech-llc.com</span></div>
@@ -1113,6 +1128,7 @@ footer { flex-direction: column; align-items: flex-start; }
 <form action="https://formsubmit.co/info@zigtech-llc.com" method="POST">
 <input type="hidden" name="_subject" value="New inquiry from zigtech-llc.com">
 <input type="hidden" name="_template" value="table">
+<input type="hidden" name="_next" value="https://zigtech-llc.com/thank-you.html">
 <input type="text" name="_honey" style="display:none">
 <div class="form-field">
 <label for="name">Name</label>
@@ -1125,13 +1141,13 @@ footer { flex-direction: column; align-items: flex-start; }
 <div class="form-field">
 <label for="inquiry">Inquiry type</label>
 <select id="inquiry" name="inquiry_type">
-<option>Federal — set-aside / prime contract</option>
-<option>Federal — subcontracting opportunity</option>
-<option>Federal — capabilities briefing</option>
-<option>Commercial — network services inquiry</option>
-<option>Commercial — managed IT services</option>
-<option>Commercial — website creation / migration</option>
-<option>Commercial — teaming / partnership</option>
+<option>Federal: set-aside / prime contract</option>
+<option>Federal: subcontracting opportunity</option>
+<option>Federal: capabilities briefing</option>
+<option>Commercial: network services inquiry</option>
+<option>Commercial: managed IT services</option>
+<option>Commercial: website creation / migration</option>
+<option>Commercial: teaming / partnership</option>
 <option>Other</option>
 </select>
 </div>
@@ -1181,6 +1197,7 @@ aria-label="Zig says: When others Zag, we Zig.">
 </div>
 </div>
 </section>
+</main>
 
 <!-- FOOTER -->
 <footer>
@@ -1199,8 +1216,16 @@ entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible')
 }, { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+const navToggle = document.getElementById('nav-toggle');
+const navLinks = document.getElementById('nav-links');
+function setMenu(open) {
+navLinks.classList.toggle('open', open);
+navToggle.setAttribute('aria-expanded', String(open));
+navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+}
+navToggle.addEventListener('click', () => setMenu(!navLinks.classList.contains('open')));
 document.querySelectorAll('.nav-links a').forEach(a => {
-a.addEventListener('click', () => document.getElementById('nav-links').classList.remove('open'));
+a.addEventListener('click', () => setMenu(false));
 });
 </script>
 </body>

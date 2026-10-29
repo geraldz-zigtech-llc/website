@@ -1,0 +1,40 @@
+# ZigTech, LLC
+
+> ZigTech, LLC is an SBA-certified Service-Disabled Veteran-Owned Small Business (SDVOSB), Veteran-Owned Small Business (VOSB), and HUBZone IT firm based in Cocoa, Florida. It provides network observability, cybersecurity, IT infrastructure, managed IT services, technology reselling, and website modernization to federal, state and local (SLED), and commercial clients.
+
+## Company facts
+
+- Legal name: ZigTech, LLC
+- Location: Cocoa, FL 32926 (HUBZone)
+- Owner and Principal Consultant: Gerald Ziegler, U.S. Navy submarine veteran with 27 years of enterprise network engineering experience, including 12 years at Cisco
+- SAM.gov UEI: W3AMXKRXLFE1
+- CAGE code: 18AP2
+- Primary NAICS: 541512 (Computer Systems Design Services); also 541511 and 541519
+- Email: info@zigtech-llc.com
+- Phone: +1 252-955-4424
+
+## Core services
+
+- Network observability and AIOps: real-time telemetry, anomaly detection, and performance analytics for multi-vendor, on-premises, cloud, and hybrid networks
+- Cybersecurity and network defense: NetFlow/IPFIX analytics, traffic analysis, intrusion detection support, and security event monitoring aligned to NIST and zero trust
+- IT infrastructure modernization: enterprise network design, SD-WAN, cloud network integration, and lifecycle management
+- Managed IT services and NOC support for commercial clients
+- Website creation, migration, and subscription cost optimization for small businesses
+- Technology reselling as a federal authorized partner for Cisco, Dell Technologies, and HPE, and as a partner for Adobe, Fortinet, HP, IBM, Microsoft, Proofpoint, Salesforce, ServiceNow, Splunk, and Ubiquiti
+- Distributors and suppliers: Carahsoft, ComponentSource, and PAX8
+
+## Who ZigTech serves
+
+- Federal civilian and defense agencies, including VA and DoD programs
+- Prime contractors and systems integrators seeking SDVOSB, VOSB, or HUBZone teaming partners
+- State, local, and education (SLED) organizations
+- Healthcare networks, financial services firms, and mid-market enterprise IT teams
+- Small businesses modernizing their web presence
+
+## Key pages
+
+- [Home](https://zigtech-llc.com/): services, certifications, partners, FAQ, and contact
+- [Capabilities statement (PDF)](https://zigtech-llc.com/ZigTech_Capabilities_Statement.pdf)
+- [Website project discovery form](https://zigtech-llc.com/discovery.html)
+- [Managed IT services assessment](https://zigtech-llc.com/msp-assessment.html)
+- [Contact](https://zigtech-llc.com/#contact)
